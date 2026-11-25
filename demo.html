@@ -1,0 +1,4718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faisal Ali | Creative Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --card-bg: rgba(255, 255, 255, 0.88);
+            --card-border: rgba(0, 0, 0, 0.08);
+            --card-shadow: 0 20px 45px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.03);
+            --pill-bg: rgba(255, 255, 255, 0.85);
+            --pill-border: rgba(0, 0, 0, 0.08);
+            --pill-text: #0f172a;
+            --loop-color: #0f172a;
+            --loop-stroke: #0f172a;
+            --mockup-bg: rgba(248, 250, 252, 0.92);
+            --mockup-header: rgba(255, 255, 255, 0.95);
+            --input-bg: rgba(255, 255, 255, 0.95);
+            --input-border: rgba(0, 0, 0, 0.1);
+            --btn-primary-bg: #0f172a;
+            --btn-primary-text: #ffffff;
+            --cursor-dot: #0f172a;
+            --cursor-ring: rgba(15, 23, 42, 0.35);
+            --modal-glass-bg: rgba(255, 255, 255, 0.92);
+            --modal-glass-border: rgba(0, 0, 0, 0.08);
+            --orbit-ring-border: rgba(0, 0, 0, 0.14);
+            --orbit-ring-shadow: 0 0 30px rgba(0, 0, 0, 0.02) inset, 0 4px 18px rgba(0, 0, 0, 0.02);
+            --char-halo-border: rgba(0, 0, 0, 0.1);
+            --char-halo-shadow: 0 0 45px rgba(0, 0, 0, 0.02) inset, 0 0 35px rgba(0, 0, 0, 0.02);
+        }
+
+        body.dark-mode {
+            --bg-color: #0b0d11;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a8b0c0;
+            --card-bg: rgba(18, 22, 30, 0.88);
+            --card-border: rgba(255, 255, 255, 0.14);
+            --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+            --pill-bg: rgba(255, 255, 255, 0.08);
+            --pill-border: rgba(255, 255, 255, 0.16);
+            --pill-text: #f0f0f0;
+            --loop-color: #f5f5f7;
+            --loop-stroke: #f5f5f7;
+            --mockup-bg: rgba(12, 15, 20, 0.9);
+            --mockup-header: rgba(22, 27, 36, 0.95);
+            --input-bg: rgba(20, 25, 35, 0.9);
+            --input-border: rgba(255, 255, 255, 0.12);
+            --btn-primary-bg: #ffffff;
+            --btn-primary-text: #111111;
+            --cursor-dot: #ffffff;
+            --cursor-ring: rgba(255, 255, 255, 0.5);
+            --modal-glass-bg: rgba(16, 20, 28, 0.96);
+            --modal-glass-border: rgba(255, 255, 255, 0.14);
+            --orbit-ring-border: rgba(255, 255, 255, 0.18);
+            --orbit-ring-shadow: 0 0 35px rgba(255, 255, 255, 0.04) inset;
+            --char-halo-border: rgba(255, 255, 255, 0.14);
+            --char-halo-shadow: 0 0 50px rgba(255, 255, 255, 0.04) inset;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Gilroy', 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+
+        #main {
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+
+        /* Ambient Sakura Canvas Background (Spans across all pages in foreground without blocking clicks) */
+        #ambient-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        /* Fixed Navigation */
+        #nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 65px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99;
+            padding: 0 35px;
+        }
+
+        #nav > h3 {
+            font-weight: 500;
+            font-size: 20px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 3px 18px rgba(15, 15, 15, 0.06);
+            color: var(--pill-text);
+            cursor: pointer;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .button button {
+            padding: 8px 18px;
+            border-radius: 50px;
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            border: 1px solid var(--pill-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 3px 15px rgba(15, 15, 15, 0.05);
+            font-size: 13.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .button button:hover {
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Active Navbar Glow & Highlight */
+        .button button.nav-btn.active {
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            border-color: var(--btn-primary-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 0 16px rgba(0, 0, 0, 0.25), 0 4px 14px rgba(0, 0, 0, 0.15);
+            font-weight: 700;
+        }
+
+        body.dark-mode .button button.nav-btn.active {
+            background: #ffffff;
+            color: #0b0d11;
+            border-color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.65), 0 0 40px rgba(255, 255, 255, 0.25);
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 300-Frame Anime Character Canvas (In center) */
+        #character-canvas {
+            position: relative;
+            z-index: 5;
+            max-width: 100vw;
+            max-height: 100vh;
+            background-color: transparent;
+            pointer-events: none;
+            display: block;
+        }
+
+        /* All Pages - Transparent so character stays visible everywhere */
+        #page {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-color: var(--bg-color);
+        }
+
+        #page1, #page2, #page3 {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-color: transparent;
+            z-index: 10;
+        }
+
+        /* Marquee Ticker Loop (Fixed: NO cut-off, smooth infinite roll) */
+        #loop {
+            display: flex;
+            position: absolute;
+            top: 75px;
+            width: 100%;
+            z-index: 3;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        #loop > h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.4;
+            padding: 10px 40px 10px 0;
+            animation: loopAnim 18s linear infinite;
+            flex-shrink: 0;
+            color: var(--loop-color);
+            margin: 0;
+        }
+
+        #loop > h1 > span {
+            -webkit-text-stroke: 1.5px var(--loop-stroke);
+            color: transparent;
+            font-weight: 600;
+            margin: 0 8px;
+        }
+
+        @keyframes loopAnim {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* PAGE 0 (Hero): Clean Flex-Column Layout (NO text overlap) */
+        .hero-left-box {
+            position: absolute;
+            top: 22%;
+            left: 5%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 480px;
+            z-index: 10;
+        }
+
+        .hero-left-box .faisal {
+            font-size: 44px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.1;
+            margin: 0;
+        }
+
+        .hero-left-box h2 {
+            font-size: 28px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .hero-left-box h4 {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .hero-left-box .follow {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-top: 6px;
+        }
+
+        .hero-left-box .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 4px;
+        }
+
+        .follow .followw {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .follow ul {
+            display: flex;
+            gap: 1.2rem;
+            font-size: 20px;
+            list-style: none;
+        }
+
+        .follow ul a {
+            text-decoration: none;
+            color: var(--pill-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s cubic-bezier(.4,0,.2,1);
+        }
+
+        .follow ul a:hover {
+            transform: scale(1.2);
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        #page .right1 {
+            position: absolute;
+            right: 5%;
+            top: 28%;
+            color: var(--text-primary);
+            font-size: 30px;
+            font-weight: 800;
+            z-index: 10;
+            background: var(--pill-bg);
+            backdrop-filter: blur(8px);
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--pill-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        #page .right1:hover {
+            transform: translateX(-5px);
+        }
+
+        #page .right2 {
+            position: absolute;
+            right: 6%;
+            top: 38%;
+            color: var(--text-primary);
+            font-size: 32px;
+            font-weight: 800;
+            z-index: 10;
+            background: var(--pill-bg);
+            backdrop-filter: blur(8px);
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 1px solid var(--pill-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        #page .right2:hover {
+            transform: translateX(-5px);
+        }
+
+        #page .hero-sticker {
+            position: absolute;
+            top: 68%;
+            right: 35px;
+            width: 24%;
+            max-width: 280px;
+            height: auto;
+            z-index: 11;
+            pointer-events: none;
+            display: block;
+            filter: drop-shadow(0 10px 25px rgba(0,0,0,0.12));
+        }
+
+        /* PAGE 1: Faisal's exact About & Skills layout */
+        #page1 #left {
+            position: absolute;
+            top: 10%;
+            left: 4%;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 32px;
+            box-shadow: var(--card-shadow);
+            width: 440px;
+            min-height: 340px;
+            padding: 34px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 10;
+        }
+
+        #page1 #left > h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: 1.2px;
+            line-height: 1.1;
+        }
+
+        #page1 #left > h3 {
+            font-size: 1.02rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        #page1 #right {
+            height: 580px;
+            width: 440px;
+            position: absolute;
+            top: 10%;
+            right: 4%;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 32px;
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            z-index: 10;
+        }
+
+        #page1 #right > h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: 1.2px;
+            display: inline-block;
+            border-bottom: 2px solid var(--text-primary);
+            padding-bottom: 4px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        #page1 #right > h1:hover {
+            color: var(--text-secondary);
+            border-bottom-color: var(--text-secondary);
+            transform: translateX(-4px);
+        }
+
+        .skills-cloud {
+            position: relative;
+            width: 100%;
+            height: 480px;
+            margin-top: 15px;
+            z-index: 5;
+            pointer-events: auto;
+        }
+
+        .skill-bubble {
+            position: absolute;
+            background: var(--pill-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--pill-border);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--pill-text);
+            padding: 0.55em 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+            transition: all 0.25s cubic-bezier(.4,0,.2,1);
+            outline: none;
+            z-index: 6;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-bubble:hover {
+            color: var(--btn-primary-text);
+            background: var(--btn-primary-bg);
+            transform: scale(1.15) translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            z-index: 8;
+        }
+
+        /* Buttons scattered positions inside card */
+        .sk-1 { top: 15px;  left: 48%; }
+        .sk-2 { top: 75px;  left: 8%; }
+        .sk-3 { top: 125px; left: 58%; }
+        .sk-4 { top: 195px; left: 34%; }
+        .sk-5 { top: 265px; left: 6%; }
+        .sk-6 { top: 85px;  left: 36%; }
+        .sk-7 { top: 200px; left: 64%; }
+        .sk-8 { top: 330px; left: 54%; }
+        .sk-9 { top: 400px; left: 26%; }
+
+        /* Tech Logo Icons inside the Skills Card */
+        .card-icon {
+            position: absolute;
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            box-sizing: border-box;
+            filter: drop-shadow(0 4px 14px rgba(0,0,0,0.15));
+            transition: all 0.25s cubic-bezier(.72,2.18,.45,.96);
+            cursor: pointer;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            z-index: 6;
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block;
+        }
+
+        .card-icon:hover {
+            transform: scale(1.22) rotate(-8deg);
+            background: #ffffff;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 9;
+        }
+
+        /* Icons scattered positions inside card */
+        .ic-1 { top: 12px;  left: 12%; }
+        .ic-2 { top: 135px; left: 6%; }
+        .ic-3 { top: 45px;  left: 78%; }
+        .ic-4 { top: 130px; left: 80%; }
+        .ic-5 { top: 260px; left: 70%; }
+        .ic-6 { top: 335px; left: 12%; }
+        .ic-7 { top: 405px; left: 72%; }
+        .ic-8 { top: 415px; left: 2%; }
+
+        /* PAGE 2: Twin Circular Orbit Project Showcase (100% Horizontal & Straight Cards) */
+        #page2 {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .projects-heading {
+            position: absolute;
+            top: 4.5%;
+            left: 4%;
+            z-index: 10;
+        }
+
+        .projects-heading .sub {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+        }
+
+        .projects-heading h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        /* Continuous Circular Orbit Animations */
+        @keyframes orbitSpinCW {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes orbitSpinCCW {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        @keyframes counterSpinCW {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+        @keyframes counterSpinCCW {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .orbit-cw {
+            animation: orbitSpinCW 32s linear infinite;
+        }
+        .orbit-ccw {
+            animation: orbitSpinCCW 32s linear infinite;
+        }
+        .counter-cw {
+            animation: counterSpinCW 32s linear infinite;
+        }
+        .counter-ccw {
+            animation: counterSpinCCW 32s linear infinite;
+        }
+
+        /* Smooth Pause on Orbit Hover: ONLY when hovering an actual project node */
+        .orbit-ring-track:has(.orbit-node:hover),
+        .orbit-ring-track:has(.orbit-node:hover) .counter-cw,
+        .orbit-ring-track:has(.orbit-node:hover) .counter-ccw,
+        .orbit-node:hover .counter-cw,
+        .orbit-node:hover .counter-ccw {
+            animation-play-state: paused !important;
+        }
+
+        /* Orbit Containers - Positioned to leave Center 3D Character completely clear */
+        .projects-orbit-container {
+            position: absolute;
+            top: 52%;
+            transform: translateY(-50%);
+            width: 340px;
+            height: 340px;
+            z-index: 20;
+            overflow: visible;
+        }
+
+        .projects-orbit-left {
+            left: 3.5%;
+        }
+
+        .projects-orbit-right {
+            right: 3.5%;
+        }
+
+        @media (min-width: 1300px) {
+            .projects-orbit-container {
+                width: 370px;
+                height: 370px;
+            }
+            .projects-orbit-left {
+                left: 4%;
+            }
+            .projects-orbit-right {
+                right: 4%;
+            }
+        }
+
+        /* Orbit Dashed Circular Ring */
+        .orbit-ring-track {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1.5px dashed var(--orbit-ring-border);
+            box-shadow: var(--orbit-ring-shadow);
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        body.dark-mode .orbit-ring-track {
+            border-color: var(--orbit-ring-border);
+            box-shadow: var(--orbit-ring-shadow);
+        }
+
+        /* Center Hub Labels */
+        .orbit-hub-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.85;
+        }
+
+        .orbit-hub-label .hub-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: var(--card-bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Center Character Cyber Aura Ring in #page2 */
+        .character-center-halo {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 440px;
+            height: 440px;
+            border-radius: 50%;
+            border: 1.5px dashed var(--char-halo-border);
+            box-shadow: var(--char-halo-shadow);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Nodes Positioned along the Circle with full pointer-events (Direct Orbit Cards) */
+        .orbit-node {
+            position: absolute;
+            cursor: pointer;
+            z-index: 30;
+            pointer-events: auto !important;
+            width: 0;
+            height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .orbit-node:hover {
+            z-index: 100;
+        }
+
+        .counter-cw, .counter-ccw {
+            width: 0;
+            height: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            transform-origin: center center;
+            pointer-events: auto !important;
+        }
+
+        /* Exact 120-Degree Equidistant Positions on the Circle */
+        .node-top {
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .node-bottom-right {
+            top: 75%;
+            left: 93.3%;
+            transform: translate(-50%, -50%);
+        }
+        .node-bottom-left {
+            top: 75%;
+            left: 6.7%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* 100% HORIZONTAL & STRAIGHT ORBIT PROJECT CARDS (Width Zyada & Height Kam: 255px × 175px) */
+        .orbit-hover-card {
+            position: relative;
+            width: 255px !important;
+            min-width: 255px !important;
+            max-width: 255px !important;
+            height: 175px !important;
+            min-height: 175px !important;
+            max-height: 175px !important;
+            flex-shrink: 0 !important;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px 12px;
+            border-radius: 18px;
+            background: var(--card-bg);
+            border: 1.5px solid var(--card-border) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--card-shadow);
+            opacity: 0.94;
+            visibility: visible;
+            pointer-events: auto !important;
+            transform: scale(0.96);
+            transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.28s ease, 
+                        border-color 0.28s ease, 
+                        opacity 0.28s ease;
+            z-index: 100;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        body.dark-mode .orbit-hover-card {
+            background: rgba(16, 20, 28, 0.92) !important;
+            border-color: rgba(255, 255, 255, 0.14) !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.65) !important;
+        }
+
+        body:not(.dark-mode):not(.cyber-overdrive) .orbit-hover-card {
+            background: rgba(255, 255, 255, 0.92) !important;
+            border-color: rgba(0, 0, 0, 0.08) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        /* Hover Elevation & Pop-up Effect on Direct Card */
+        body.dark-mode .orbit-node:hover .orbit-hover-card,
+        body.dark-mode .orbit-hover-card:hover {
+            opacity: 1 !important;
+            transform: scale(1.08) !important;
+            border-color: rgba(255, 255, 255, 0.45) !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 25px rgba(255, 255, 255, 0.12) !important;
+            z-index: 500;
+        }
+
+        body:not(.dark-mode):not(.cyber-overdrive) .orbit-node:hover .orbit-hover-card,
+        body:not(.dark-mode):not(.cyber-overdrive) .orbit-hover-card:hover {
+            opacity: 1 !important;
+            transform: scale(1.08) !important;
+            border-color: rgba(0, 0, 0, 0.25) !important;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15), 0 4px 15px rgba(0, 0, 0, 0.06) !important;
+            z-index: 500;
+        }
+
+        .hover-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 8px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-bottom: 3px;
+        }
+        .hover-card-header .cat {
+            font-family: monospace;
+            color: var(--text-secondary);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .hover-card-header .live-badge {
+            color: #10b981;
+            font-weight: 700;
+            background: rgba(16, 185, 129, 0.12);
+            padding: 1px 5px;
+            border-radius: 4px;
+            border: 1px solid rgba(16, 185, 129, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Fixed Widescreen 16:9 Window for All Cards (Identical Across All 6 Cards) */
+        .hover-video-screen {
+            height: 80px !important;
+            min-height: 80px !important;
+            max-height: 80px !important;
+            width: 100% !important;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000000;
+            border: 1px solid var(--pill-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            flex-shrink: 0;
+            margin-bottom: 4px;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.35s ease, 
+                        border-color 0.3s ease;
+            transform-origin: center center;
+            cursor: pointer;
+        }
+
+        .orbit-node:hover .hover-video-screen {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+        }
+
+        body.dark-mode .hover-video-screen:hover {
+            transform: scale(1.35) !important;
+            z-index: 250;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        body:not(.dark-mode):not(.cyber-overdrive) .hover-video-screen:hover {
+            transform: scale(1.35) !important;
+            z-index: 250;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .hover-video-rec {
+            position: absolute;
+            top: 4px;
+            left: 5px;
+            font-size: 7px;
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 1px 5px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            z-index: 2;
+        }
+
+        .hover-video-title {
+            font-size: 8.5px;
+            font-family: monospace;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-top: 2px;
+        }
+
+        .hover-card-title {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-shrink: 0;
+            margin: 0 0 2px;
+        }
+
+        .hover-card-desc {
+            font-size: 8.5px;
+            color: var(--text-secondary);
+            line-height: 1.35;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 23px;
+            flex-shrink: 0;
+            margin: 0 0 3px;
+        }
+
+        .hover-card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 8.5px;
+            height: 16px;
+            padding-top: 3px;
+            border-top: 1px solid var(--pill-border);
+            flex-shrink: 0;
+        }
+        .hover-card-bottom .tech {
+            font-family: monospace;
+            color: var(--text-secondary);
+            font-size: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 155px;
+        }
+        .hover-card-bottom .action {
+            color: var(--text-primary);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* ========================================================= */
+        /* EYE-CATCHY & CLASSIC TRANSLUCENT GLASS MODAL (ON CLICK)    */
+        /* (Bigger High-Res Image/Video Box + 2X Double-Size Pop-Out)*/
+        /* ========================================================= */
+        #project-detail-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.68);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        body:not(.dark-mode):not(.cyber-overdrive) #project-detail-modal {
+            background: rgba(0, 0, 0, 0.45);
+        }
+
+        #project-detail-modal.active {
+            display: flex;
+        }
+
+        .project-modal-glass {
+            position: relative;
+            width: 94%;
+            max-width: 580px;
+            overflow: visible; /* Allows photo/video to pop completely outside card bounds smoothly */
+            background: var(--modal-glass-bg);
+            backdrop-filter: blur(32px) saturate(160%);
+            -webkit-backdrop-filter: blur(32px) saturate(160%);
+            border: 1.5px solid var(--modal-glass-border);
+            border-radius: 24px;
+            padding: 22px 24px 20px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+            animation: modalPopIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            color: var(--text-primary);
+        }
+
+        body.dark-mode .project-modal-glass {
+            background: linear-gradient(145deg, rgba(16, 20, 28, 0.97), rgba(10, 13, 18, 0.98));
+            border-color: rgba(255, 255, 255, 0.14);
+            box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        body:not(.dark-mode):not(.cyber-overdrive) .project-modal-glass {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(28px) saturate(180%);
+            -webkit-backdrop-filter: blur(28px) saturate(180%);
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 30px 85px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+        }
+
+        /* Cyber Overdrive Holographic HUD Modal (Overrides in Overdrive mode regardless of previous theme) */
+        body.cyber-overdrive #project-detail-modal {
+            background: rgba(2, 6, 18, 0.85) !important;
+        }
+
+        body.cyber-overdrive .project-modal-glass {
+            background: rgba(6, 12, 28, 0.96) !important;
+            backdrop-filter: blur(32px) saturate(190%) !important;
+            -webkit-backdrop-filter: blur(32px) saturate(190%) !important;
+            border: 1.5px solid rgba(0, 240, 255, 0.6) !important;
+            box-shadow: 0 0 50px rgba(0, 240, 255, 0.35), 0 35px 90px rgba(0, 0, 0, 0.9) !important;
+            color: #f0fdf4 !important;
+        }
+
+        body.cyber-overdrive .project-modal-glass::before {
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.85), transparent) !important;
+        }
+
+        body.cyber-overdrive .modal-top-bar {
+            border-bottom-color: rgba(0, 240, 255, 0.25) !important;
+        }
+
+        body.cyber-overdrive .modal-cat-tag {
+            color: #00f0ff !important;
+        }
+
+        body.cyber-overdrive .modal-close-btn {
+            background: rgba(15, 23, 42, 0.85) !important;
+            border-color: rgba(0, 240, 255, 0.4) !important;
+            color: #00f0ff !important;
+        }
+
+        body.cyber-overdrive .modal-close-btn:hover {
+            background: rgba(255, 0, 128, 0.25) !important;
+            border-color: #ff007f !important;
+            color: #ff007f !important;
+            box-shadow: 0 0 16px rgba(255, 0, 128, 0.7) !important;
+        }
+
+        body.cyber-overdrive .modal-title-text {
+            color: #00f0ff !important;
+            text-shadow: 0 0 16px rgba(0, 240, 255, 0.85) !important;
+        }
+
+        body.cyber-overdrive .modal-desc-text {
+            color: #cbd5e1 !important;
+        }
+
+        body.cyber-overdrive .modal-meta-card {
+            background: rgba(10, 20, 40, 0.85) !important;
+            border-color: rgba(0, 240, 255, 0.35) !important;
+            color: #f0fdf4 !important;
+        }
+
+        body.cyber-overdrive .modal-meta-card .meta-lbl {
+            color: #ff007f !important;
+        }
+
+        body.cyber-overdrive .modal-tech-wrap .lbl {
+            color: #94a3b8 !important;
+        }
+
+        body.cyber-overdrive .modal-tech-pill {
+            background: rgba(10, 20, 40, 0.85) !important;
+            border-color: rgba(0, 240, 255, 0.35) !important;
+            color: #00f0ff !important;
+        }
+
+        body.cyber-overdrive .modal-btn.primary {
+            background: linear-gradient(135deg, #00f0ff, #ff007f) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5) !important;
+        }
+
+        body.cyber-overdrive .modal-btn.secondary {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border-color: rgba(0, 240, 255, 0.4) !important;
+            color: #e2e8f0 !important;
+        }
+
+        body.cyber-overdrive .modal-btn.secondary:hover {
+            border-color: #00f0ff !important;
+            color: #00f0ff !important;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4) !important;
+        }
+
+        .project-modal-glass::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 8%;
+            right: 8%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            border-radius: 2px;
+        }
+
+        body:not(.dark-mode):not(.cyber-overdrive) .project-modal-glass::before {
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+        }
+
+        @keyframes modalPopIn {
+            from { opacity: 0; transform: scale(0.92) translateY(12px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .modal-top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--card-border);
+            margin-bottom: 14px;
+        }
+
+        .modal-cat-tag {
+            font-size: 10px;
+            font-family: monospace;
+            color: var(--text-secondary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .modal-cat-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+            display: inline-block;
+        }
+
+        .modal-close-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 800;
+            transition: all 0.22s ease;
+        }
+        .modal-close-btn:hover {
+            background: rgba(239, 68, 68, 0.25);
+            border-color: rgba(239, 68, 68, 0.6);
+            color: #ef4444;
+            transform: scale(1.12) rotate(90deg);
+        }
+
+        /* Large & Crisp Preview Window with Smooth Double Size (2X) Pop-Out Zoom */
+        .modal-video-box {
+            height: 260px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000000;
+            border: 1.5px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+            cursor: zoom-in;
+            transform: translateY(0) scale(1);
+            transform-origin: center center;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                        border-color 0.3s ease;
+            z-index: 20;
+        }
+
+        body.dark-mode .modal-video-box:hover {
+            transform: translateY(55px) scale(1.92);
+            z-index: 99999;
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 45px 120px rgba(0, 0, 0, 0.98), 0 0 40px rgba(255, 255, 255, 0.15);
+        }
+
+        body:not(.dark-mode):not(.cyber-overdrive) .modal-video-box:hover {
+            transform: translateY(55px) scale(1.92);
+            z-index: 99999;
+            border-color: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 45px 120px rgba(0, 0, 0, 0.35);
+        }
+
+        .modal-preview-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            border-radius: 14px;
+        }
+
+        .modal-video-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 14px;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+        }
+
+        .modal-video-rec {
+            position: absolute;
+            top: 10px;
+            left: 12px;
+            font-size: 8.5px;
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+            transition: opacity 0.2s ease;
+        }
+
+        .modal-img-zoom-hint {
+            position: absolute;
+            bottom: 10px;
+            right: 12px;
+            font-size: 8.5px;
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            padding: 3px 9px;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 10;
+            pointer-events: none;
+            backdrop-filter: blur(4px);
+            transition: opacity 0.2s ease;
+        }
+
+        /* Hide tiny badges when zoomed so preview is 100% clean and unobstructed */
+        .modal-video-box:hover .modal-video-rec,
+        .modal-video-box:hover .modal-img-zoom-hint {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal-title-text {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.25;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
+        }
+
+        .modal-desc-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+            line-height: 1.52;
+            margin-bottom: 12px;
+        }
+
+        .modal-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .modal-meta-card {
+            padding: 8px 12px;
+            border-radius: 12px;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            font-size: 10.5px;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+        .modal-meta-card:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-1px);
+        }
+        .modal-meta-card .meta-lbl {
+            font-size: 8px;
+            font-family: monospace;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 2px;
+            letter-spacing: 0.6px;
+        }
+
+        .modal-tech-wrap {
+            margin-bottom: 14px;
+        }
+        .modal-tech-wrap .lbl {
+            font-size: 8.5px;
+            font-family: monospace;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            letter-spacing: 0.6px;
+        }
+        .modal-tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .modal-tech-pill {
+            font-size: 9.5px;
+            font-family: monospace;
+            padding: 4px 9px;
+            border-radius: 7px;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+        .modal-tech-pill:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+            transform: translateY(-1px);
+        }
+
+        .modal-action-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .modal-btn {
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 7px 18px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        .modal-btn.secondary {
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--text-primary);
+        }
+        .modal-btn.secondary:hover {
+            border-color: var(--text-primary);
+            transform: translateY(-1px);
+        }
+        .modal-btn.primary {
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            border: 1px solid var(--btn-primary-bg);
+            font-weight: 800;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+        }
+        .modal-btn.primary:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+        }
+        body.dark-mode .modal-btn.primary {
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
+        }
+        body.dark-mode .modal-btn.primary:hover {
+            box-shadow: 0 8px 26px rgba(255, 255, 255, 0.4);
+        }
+
+        /* Screen Size Adaptations for 2X Zoom */
+        @media (max-width: 1100px) {
+            .modal-video-box:hover {
+                transform: translateY(40px) scale(1.6);
+            }
+        }
+        @media (max-height: 640px) {
+            .project-modal-glass {
+                max-height: 94vh;
+                overflow-y: auto;
+            }
+            .modal-video-box {
+                height: 190px;
+            }
+        }
+
+        /* PAGE 3: Contact & Connect */
+        #page3 {
+            position: relative;
+        }
+
+        .contact-left-card {
+            position: absolute;
+            top: 20%;
+            left: 4%;
+            width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 34px;
+            box-shadow: var(--card-shadow);
+            z-index: 10;
+        }
+
+        .contact-left-card h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        .contact-left-card p {
+            font-size: 14.5px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .contact-left-card .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .contact-left-card .info-row i {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+        }
+
+        .contact-social-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid var(--pill-border);
+        }
+
+        .social-icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+
+        .social-icon-btn:hover {
+            transform: translateY(-3px) scale(1.08);
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        body.cyber-overdrive .contact-social-row {
+            border-top-color: rgba(0, 240, 255, 0.25);
+        }
+
+        body.cyber-overdrive .social-icon-btn {
+            background: rgba(15, 23, 42, 0.85);
+            border-color: rgba(0, 240, 255, 0.35);
+            color: #00f0ff;
+        }
+
+        body.cyber-overdrive .social-icon-btn:hover {
+            background: linear-gradient(135deg, #00f0ff, #ff007f);
+            border-color: #ff007f;
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+        }
+
+        .contact-right-form {
+            position: absolute;
+            top: 20%;
+            right: 4%;
+            width: 420px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 28px;
+            padding: 34px;
+            box-shadow: var(--card-shadow);
+            z-index: 10;
+        }
+
+        .contact-right-form h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 14px;
+        }
+
+        .contact-input {
+            width: 100%;
+            padding: 11px 15px;
+            border-radius: 12px;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            font-size: 13.5px;
+            color: var(--text-primary);
+            margin-bottom: 11px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .contact-input:focus {
+            border-color: var(--text-primary);
+            box-shadow: 0 0 0 3px rgba(120, 120, 120, 0.15);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Feature 1: Minimal Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg-color);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+            transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s ease;
+        }
+
+        #preloader.preloader-hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        .preloader-box {
+            width: 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .preloader-title {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .preloader-counter {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 16px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .preloader-track {
+            width: 100%;
+            height: 3px;
+            background: var(--pill-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        .preloader-fill {
+            width: 0%;
+            height: 100%;
+            background: var(--btn-primary-bg);
+            border-radius: 4px;
+            transition: width 0.1s ease-out;
+        }
+
+        .preloader-sub {
+            font-size: 9px;
+            font-family: monospace;
+            letter-spacing: 1.2px;
+            color: var(--text-secondary);
+        }
+
+        /* Feature 3: Hero Action Buttons */
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .hero-btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 20px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .hero-btn-action.primary {
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.15);
+            border: 1px solid transparent;
+        }
+
+        .hero-btn-action.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+        }
+
+        .hero-btn-action.secondary {
+            background: var(--pill-bg);
+            color: var(--pill-text);
+            border: 1px solid var(--pill-border);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .hero-btn-action.secondary:hover {
+            transform: translateY(-2px);
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        /* Custom Magnetic Micro-Cursor (Delicate & Compact) */
+        #cursor-dot {
+            width: 4px;
+            height: 4px;
+            background-color: var(--cursor-dot);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s, transform 0.15s ease-out;
+            box-shadow: 0 0 4px rgba(0,0,0,0.25);
+        }
+
+        #cursor-ring {
+            width: 16px;
+            height: 16px;
+            border: 1.2px solid var(--cursor-ring);
+            border-radius: 50%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        height 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.2s ease,
+                        border-color 0.2s ease,
+                        box-shadow 0.2s ease;
+        }
+
+        #cursor-ring .cursor-text {
+            font-size: 7.5px;
+            font-weight: 800;
+            color: var(--btn-primary-text);
+            letter-spacing: 0.8px;
+            opacity: 0;
+            transition: opacity 0.18s ease;
+            text-transform: uppercase;
+        }
+
+        body.cursor-hover #cursor-dot {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0);
+        }
+
+        body.cursor-hover #cursor-ring {
+            width: 38px;
+            height: 38px;
+            background: var(--btn-primary-bg);
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+        }
+
+        body.cursor-hover #cursor-ring .cursor-text {
+            opacity: 1;
+        }
+
+        body.cursor-button #cursor-dot {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        body.cursor-button #cursor-ring {
+            width: 26px;
+            height: 26px;
+            background: var(--pill-bg);
+            border-color: var(--cursor-ring);
+        }
+
+        /* Feature 3: Interactive Floating Anime Dialogue Bubble */
+        #character-dialogue {
+            position: fixed;
+            top: 130px;
+            left: 58%;
+            transform: translateX(-50%);
+            z-index: 25;
+            background: var(--card-bg);
+            border: 1px solid var(--pill-border);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 18px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 380px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            user-select: none;
+            animation: floatDialogue 3.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatDialogue {
+            0% { transform: translate(-50%, 0px); }
+            100% { transform: translate(-50%, -7px); }
+        }
+
+        #character-dialogue:hover {
+            border-color: var(--text-primary);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+        }
+
+        .dialogue-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .dialogue-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dialogue-header {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dialogue-name {
+            font-size: 9.5px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+        }
+
+        .dialogue-badge {
+            font-size: 8px;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 4px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        #dialogue-text {
+            font-size: 11.5px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.35;
+        }
+
+        .dialogue-prompt {
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            padding: 3px 7px;
+            border-radius: 12px;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            white-space: nowrap;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        /* Feature: Floating Character Model Switcher */
+        #avatar-model-switcher {
+            position: fixed;
+            bottom: 24px;
+            left: 28px;
+            z-index: 99;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 50px;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12.5px;
+            color: var(--text-primary);
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+
+        #avatar-model-switcher:hover {
+            transform: translateY(-2px) scale(1.04);
+            border-color: var(--text-primary);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .avatar-switch-badge-hint {
+            font-size: 9.5px;
+            font-family: monospace;
+            background: var(--btn-primary-bg);
+            color: var(--btn-primary-text);
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 4px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Sound Button Accent */
+        #sound-btn.sound-on {
+            border-color: #10b981;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.35);
+            color: #10b981;
+        }
+
+        /* ==================================================== */
+        /* Feature: ⚡ Cyberpunk Overdrive / Hyperdrive Mode */
+        /* ==================================================== */
+        #overdrive-btn {
+            position: relative;
+            background: var(--pill-bg);
+            border: 1px solid var(--pill-border);
+            color: var(--text-primary);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        #overdrive-btn:hover {
+            border-color: #00f0ff;
+            color: #00f0ff;
+            box-shadow: 0 0 14px rgba(0, 240, 255, 0.45);
+            transform: scale(1.04);
+        }
+
+        #overdrive-btn.overdrive-active {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.22), rgba(255, 0, 128, 0.22));
+            border-color: #00f0ff;
+            color: #00f0ff;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.65), inset 0 0 10px rgba(255, 0, 128, 0.35);
+            animation: overdriveBtnPulse 1.2s infinite alternate ease-in-out;
+        }
+
+        @keyframes overdriveBtnPulse {
+            0% { box-shadow: 0 0 12px rgba(0, 240, 255, 0.5); border-color: #00f0ff; color: #00f0ff; }
+            100% { box-shadow: 0 0 25px rgba(255, 0, 128, 0.8), 0 0 10px #00f0ff; border-color: #ff007f; color: #ff007f; }
+        }
+
+        .overdrive-bolt {
+            display: inline-block;
+            transition: transform 0.25s ease;
+        }
+
+        #overdrive-btn.overdrive-active .overdrive-bolt {
+            animation: boltSpin 1.6s infinite linear;
+        }
+
+        @keyframes boltSpin {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.25) rotate(15deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* Expanding Shockwave Transition Ripple */
+        #overdrive-shockwave {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 9999;
+            box-shadow: 0 0 80px 25px rgba(0, 240, 255, 0.85), inset 0 0 50px 15px rgba(255, 0, 128, 0.75);
+            border: 3.5px solid #00f0ff;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.25) 0%, rgba(255, 0, 128, 0.2) 45%, transparent 75%);
+            opacity: 0;
+        }
+
+        /* 3D Cyberpunk Neon Grid Floor */
+        #cyber-grid-container {
+            position: fixed;
+            inset: 0;
+            perspective: 380px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.cyber-overdrive #cyber-grid-container {
+            opacity: 1;
+        }
+
+        .cyber-grid-plane {
+            position: absolute;
+            width: 260%;
+            left: -80%;
+            height: 65%;
+            bottom: -8%;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.45) 1.5px, transparent 1.5px),
+                linear-gradient(to bottom, rgba(255, 0, 128, 0.5) 1.5px, transparent 1.5px);
+            background-size: 65px 44px;
+            transform: rotateX(72deg);
+            transform-origin: bottom center;
+            animation: cyberGridForward 0.85s linear infinite;
+            mask-image: linear-gradient(to top, rgba(0,0,0,1) 15%, transparent 92%);
+            -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 15%, transparent 92%);
+        }
+
+        @keyframes cyberGridForward {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 44px; }
+        }
+
+        .cyber-horizon-glow {
+            position: absolute;
+            bottom: 22%;
+            left: 0;
+            width: 100%;
+            height: 140px;
+            background: radial-gradient(ellipse at 50% 100%, rgba(0, 240, 255, 0.4) 0%, rgba(255, 0, 128, 0.3) 45%, transparent 75%);
+            filter: blur(25px);
+            pointer-events: none;
+        }
+
+        /* Overdrive Visual Overrides across Body & ALL Sections (Hero, About, Projects, Contact) */
+        body.cyber-overdrive {
+            --bg-color: #030712 !important;
+            --text-primary: #f0fdf4 !important;
+            --text-secondary: #94a3b8 !important;
+            --card-bg: rgba(6, 12, 28, 0.85) !important;
+            --card-border: rgba(0, 240, 255, 0.35) !important;
+            --pill-bg: rgba(8, 16, 32, 0.85) !important;
+            --pill-border: rgba(0, 240, 255, 0.35) !important;
+            --btn-primary-bg: linear-gradient(135deg, #00f0ff, #ff007f) !important;
+            --btn-primary-text: #ffffff !important;
+            --btn-primary-hover: linear-gradient(135deg, #38bdf8, #f43f5e) !important;
+        }
+
+        body.cyber-overdrive #page {
+            background-color: transparent !important;
+        }
+
+        /* Hero Loop Heading Overdrive */
+        body.cyber-overdrive #loop h1 {
+            color: #00f0ff !important;
+            text-shadow: 0 0 18px rgba(0, 240, 255, 0.9), 0 0 35px rgba(255, 0, 128, 0.7);
+        }
+
+        body.cyber-overdrive #loop h1 span {
+            color: #ff007f !important;
+            text-shadow: 0 0 18px rgba(255, 0, 128, 0.9), 0 0 35px rgba(0, 240, 255, 0.7);
+        }
+
+        /* Character Hologram Glow Across All Sections */
+        body.cyber-overdrive #character-canvas {
+            filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.85)) drop-shadow(0 0 45px rgba(255, 0, 128, 0.55));
+            animation: holoPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes holoPulse {
+            0% { filter: drop-shadow(0 0 16px rgba(0, 240, 255, 0.75)) drop-shadow(0 0 35px rgba(255, 0, 128, 0.45)); }
+            100% { filter: drop-shadow(0 0 28px rgba(0, 240, 255, 0.95)) drop-shadow(0 0 65px rgba(255, 0, 128, 0.8)); }
+        }
+
+        body.cyber-overdrive #nav h3 {
+            color: #00f0ff !important;
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.8);
+        }
+
+        body.cyber-overdrive .nav-btn {
+            color: #94a3b8 !important;
+        }
+
+        body.cyber-overdrive .nav-btn.active {
+            background: rgba(0, 240, 255, 0.2) !important;
+            color: #00f0ff !important;
+            border: 1px solid rgba(0, 240, 255, 0.5) !important;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4) !important;
+        }
+
+        /* Section 1: About Me & Skills Overdrive Glow */
+        body.cyber-overdrive #page1 #left {
+            background: rgba(6, 14, 30, 0.88) !important;
+            border: 1px solid rgba(0, 240, 255, 0.55) !important;
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.35), inset 0 0 25px rgba(255, 0, 128, 0.15) !important;
+        }
+
+        body.cyber-overdrive #page1 #left > h1 {
+            color: #00f0ff !important;
+            text-shadow: 0 0 16px rgba(0, 240, 255, 0.85), 0 0 30px rgba(0, 240, 255, 0.4) !important;
+        }
+
+        body.cyber-overdrive #page1 #left > h3 {
+            color: #cbd5e1 !important;
+        }
+
+        body.cyber-overdrive #page1 #right {
+            background: rgba(6, 14, 30, 0.88) !important;
+            border: 1px solid rgba(255, 0, 128, 0.55) !important;
+            box-shadow: 0 0 35px rgba(255, 0, 128, 0.35), inset 0 0 25px rgba(0, 240, 255, 0.15) !important;
+        }
+
+        body.cyber-overdrive #page1 #right > h1 {
+            color: #ff007f !important;
+            text-shadow: 0 0 16px rgba(255, 0, 128, 0.85), 0 0 30px rgba(255, 0, 128, 0.4) !important;
+        }
+
+        body.cyber-overdrive .skill-btn {
+            background: rgba(15, 23, 42, 0.9) !important;
+            border: 1px solid rgba(0, 240, 255, 0.4) !important;
+            color: #00f0ff !important;
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.25) !important;
+        }
+
+        body.cyber-overdrive .skill-btn:hover {
+            border-color: #ff007f !important;
+            color: #ff007f !important;
+            box-shadow: 0 0 22px rgba(255, 0, 128, 0.65) !important;
+        }
+
+        /* Section 2: Featured Projects & Twin Orbits Overdrive */
+        body.cyber-overdrive .projects-heading h1 {
+            color: #00f0ff !important;
+            text-shadow: 0 0 18px rgba(0, 240, 255, 0.85), 0 0 35px rgba(255, 0, 128, 0.5) !important;
+        }
+
+        body.cyber-overdrive .projects-heading .sub {
+            color: #ff007f !important;
+            text-shadow: 0 0 10px rgba(255, 0, 128, 0.8) !important;
+        }
+
+        body.cyber-overdrive .orbit-ring-line {
+            border-color: rgba(0, 240, 255, 0.65) !important;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4), inset 0 0 25px rgba(255, 0, 128, 0.25) !important;
+        }
+
+        body.cyber-overdrive .orbit-ring-line.inner {
+            border-color: rgba(255, 0, 128, 0.65) !important;
+            box-shadow: 0 0 25px rgba(255, 0, 128, 0.4), inset 0 0 25px rgba(0, 240, 255, 0.25) !important;
+        }
+
+        /* Section 2 Orbit Cards in Cyber Overdrive Mode */
+        body.cyber-overdrive .orbit-hover-card {
+            background: rgba(6, 12, 28, 0.94) !important;
+            border: 1.5px solid rgba(0, 240, 255, 0.55) !important;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.88), 0 0 22px rgba(0, 240, 255, 0.3) !important;
+            backdrop-filter: blur(24px) saturate(180%) !important;
+            -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+        }
+
+        body.cyber-overdrive .orbit-node:hover .orbit-hover-card,
+        body.cyber-overdrive .orbit-hover-card:hover {
+            opacity: 1 !important;
+            transform: scale(1.08) !important;
+            border-color: #ff007f !important;
+            box-shadow: 0 22px 55px rgba(0, 0, 0, 0.96), 0 0 35px rgba(255, 0, 128, 0.75) !important;
+            z-index: 500;
+        }
+
+        body.cyber-overdrive .hover-card-header .cat {
+            color: #ff007f !important;
+            text-shadow: 0 0 8px rgba(255, 0, 128, 0.7) !important;
+        }
+
+        body.cyber-overdrive .hover-card-header .live-badge {
+            background: rgba(0, 240, 255, 0.15) !important;
+            color: #00f0ff !important;
+            border-color: rgba(0, 240, 255, 0.45) !important;
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.4) !important;
+        }
+
+        body.cyber-overdrive .hover-video-screen {
+            border-color: rgba(0, 240, 255, 0.35) !important;
+        }
+
+        body.cyber-overdrive .hover-video-screen:hover {
+            transform: scale(1.35) !important;
+            z-index: 250;
+            border-color: #00f0ff !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.98), 0 0 30px rgba(0, 240, 255, 0.6) !important;
+        }
+
+        body.cyber-overdrive .hover-card-title {
+            color: #00f0ff !important;
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.8) !important;
+        }
+
+        body.cyber-overdrive .hover-card-desc {
+            color: #cbd5e1 !important;
+        }
+
+        body.cyber-overdrive .hover-card-bottom {
+            border-top-color: rgba(0, 240, 255, 0.25) !important;
+        }
+
+        body.cyber-overdrive .hover-card-bottom .tech {
+            color: #00f0ff !important;
+        }
+
+        body.cyber-overdrive .hover-card-bottom .action {
+            color: #ff007f !important;
+            text-shadow: 0 0 8px rgba(255, 0, 128, 0.8) !important;
+        }
+
+        /* Section 3: Contact Me Cyberpunk Uplink */
+        body.cyber-overdrive .contact-left-card {
+            background: rgba(6, 14, 30, 0.88) !important;
+            border: 1px solid rgba(0, 240, 255, 0.55) !important;
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.35), inset 0 0 25px rgba(255, 0, 128, 0.15) !important;
+        }
+
+        body.cyber-overdrive .contact-left-card h1 {
+            color: #00f0ff !important;
+            text-shadow: 0 0 16px rgba(0, 240, 255, 0.85) !important;
+        }
+
+        body.cyber-overdrive .contact-left-card p {
+            color: #cbd5e1 !important;
+        }
+
+        body.cyber-overdrive .contact-left-card .info-row {
+            color: #f1f5f9 !important;
+        }
+
+        body.cyber-overdrive .contact-left-card .info-row i {
+            background: linear-gradient(135deg, #00f0ff, #ff007f) !important;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.6) !important;
+            color: #ffffff !important;
+        }
+
+        body.cyber-overdrive .contact-right-form {
+            background: rgba(6, 14, 30, 0.88) !important;
+            border: 1px solid rgba(255, 0, 128, 0.55) !important;
+            box-shadow: 0 0 35px rgba(255, 0, 128, 0.35), inset 0 0 25px rgba(0, 240, 255, 0.15) !important;
+        }
+
+        body.cyber-overdrive .contact-right-form h3 {
+            color: #ff007f !important;
+            text-shadow: 0 0 14px rgba(255, 0, 128, 0.85) !important;
+        }
+
+        body.cyber-overdrive .contact-input {
+            background: rgba(15, 23, 42, 0.85) !important;
+            border-color: rgba(0, 240, 255, 0.35) !important;
+            color: #f0fdf4 !important;
+        }
+
+        body.cyber-overdrive .contact-input:focus {
+            border-color: #00f0ff !important;
+            box-shadow: 0 0 16px rgba(0, 240, 255, 0.5) !important;
+        }
+
+        body.cyber-overdrive .submit-btn {
+            background: linear-gradient(135deg, #00f0ff, #ff007f) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.6) !important;
+            letter-spacing: 1px !important;
+        }
+
+        body.cyber-overdrive .submit-btn:hover {
+            box-shadow: 0 0 35px rgba(255, 0, 128, 0.9) !important;
+            transform: scale(1.02);
+        }
+
+        /* Floating Overdrive Accents */
+        body.cyber-overdrive #character-dialogue {
+            background: rgba(6, 14, 30, 0.92) !important;
+            border: 1px solid rgba(0, 240, 255, 0.55) !important;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4) !important;
+            color: #f0fdf4 !important;
+        }
+
+        body.cyber-overdrive #dialogue-text {
+            color: #f0fdf4 !important;
+        }
+
+        body.cyber-overdrive #avatar-model-switcher {
+            background: rgba(6, 14, 30, 0.92) !important;
+            border: 1px solid rgba(0, 240, 255, 0.5) !important;
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.35) !important;
+            color: #00f0ff !important;
+        }
+
+        /* Feature 5: Interactive Magnetic Tech Orbit around Character */
+        #tech-orbit-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 480px;
+            height: 480px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .orbit-ellipse {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1.5px dashed var(--char-halo-border);
+            box-shadow: var(--char-halo-shadow);
+            animation: rotateOrbit 36s linear infinite;
+        }
+
+        body.dark-mode .orbit-ellipse {
+            border-color: var(--char-halo-border);
+            box-shadow: var(--char-halo-shadow);
+        }
+
+        .orbit-badge {
+            position: absolute;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 1.5px solid rgba(99, 102, 241, 0.25);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--text-primary);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            pointer-events: auto;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            animation: counterRotate 36s linear infinite;
+        }
+
+        body.dark-mode .orbit-badge {
+            background: var(--card-bg);
+            border-color: var(--pill-border);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes counterRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-360deg); }
+        }
+
+        .orbit-badge:hover {
+            transform: scale(1.3) !important;
+            border-color: var(--btn-primary-bg);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+            z-index: 10;
+        }
+
+        /* 6 Points on 480px circle (R = 218px, half badge = 21px) */
+        .orbit-badge.badge-1 { top: calc(50% - 218px - 21px); left: calc(50% - 21px); color: #61dafb; }
+        .orbit-badge.badge-2 { top: calc(50% - 109px - 21px); left: calc(50% + 189px - 21px); color: #f7df1e; }
+        .orbit-badge.badge-3 { top: calc(50% + 109px - 21px); left: calc(50% + 189px - 21px); font-weight: 800; font-size: 12px; }
+        .orbit-badge.badge-4 { top: calc(50% + 218px - 21px); left: calc(50% - 21px); font-weight: 900; font-size: 14px; }
+        .orbit-badge.badge-5 { top: calc(50% + 109px - 21px); left: calc(50% - 189px - 21px); color: #38bdf8; }
+        .orbit-badge.badge-6 { top: calc(50% - 109px - 21px); left: calc(50% - 189px - 21px); color: #4b8bbe; }
+
+        /* ======================================================== */
+        /* RESPONSIVE MEDIA QUERIES: MOBILE & TABLET OPTIMIZATION   */
+        /* ======================================================== */
+
+        /* 1. Coarse Pointer / Touch Screens: Hide Custom Magnetic Cursor */
+        @media (hover: none) and (pointer: coarse) {
+            #cursor-dot, #cursor-ring {
+                display: none !important;
+            }
+            * {
+                cursor: auto !important;
+            }
+        }
+
+        /* 2. Tablets & Mobile Devices (Screens <= 900px) */
+        @media (max-width: 900px) {
+            /* Hide custom cursor */
+            #cursor-dot, #cursor-ring {
+                display: none !important;
+            }
+
+            /* Compact Fixed Navigation Bar */
+            #nav {
+                height: 56px;
+                padding: 0 14px;
+            }
+            #nav > h3 {
+                font-size: 15px;
+                padding: 5px 12px;
+            }
+            .button {
+                gap: 6px;
+            }
+            .button button {
+                padding: 6px 12px;
+                font-size: 12px;
+                gap: 4px;
+            }
+
+            /* Hero Section (#page) */
+            #loop {
+                top: 58px;
+            }
+            #loop > h1 {
+                font-size: 32px;
+                padding: 6px 20px 6px 0;
+            }
+            .hero-left-box {
+                top: 14%;
+                left: 5%;
+                width: 90%;
+                max-width: 420px;
+                gap: 10px;
+            }
+            .hero-left-box .faisal {
+                font-size: 32px;
+            }
+            .hero-left-box h2 {
+                font-size: 19px;
+            }
+            .hero-left-box h4 {
+                font-size: 12.5px;
+                line-height: 1.5;
+                max-width: 85vw;
+            }
+            .hero-left-box .follow {
+                gap: 0.8rem;
+                margin-top: 2px;
+            }
+            .follow ul a {
+                width: 32px;
+                height: 32px;
+                font-size: 15px;
+            }
+            .hero-actions {
+                gap: 10px;
+                margin-top: 4px;
+            }
+            .hero-btn-action {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+            #page .right1 {
+                top: auto;
+                bottom: 18%;
+                right: 4%;
+                font-size: 15px;
+                padding: 6px 14px;
+                border-radius: 14px;
+            }
+            #page .right2 {
+                top: auto;
+                bottom: 11%;
+                right: 4%;
+                font-size: 15px;
+                padding: 6px 14px;
+                border-radius: 14px;
+            }
+            #page .hero-sticker {
+                width: 100px;
+                max-width: 100px;
+                top: auto;
+                bottom: 3%;
+                left: 4%;
+                right: auto;
+                opacity: 0.75;
+            }
+
+            /* Interactive Floating Anime Dialogue Bubble */
+            #character-dialogue {
+                left: 50%;
+                top: 76px;
+                max-width: 90vw;
+                padding: 8px 12px;
+            }
+            #dialogue-text {
+                font-size: 11px;
+            }
+            .dialogue-prompt {
+                font-size: 8px;
+                padding: 2px 6px;
+            }
+
+            /* Character Model Switcher */
+            #avatar-model-switcher {
+                bottom: 14px;
+                left: 12px;
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+
+            /* Tech Orbit around Character */
+            #tech-orbit-container {
+                width: 300px;
+                height: 300px;
+            }
+            .orbit-badge {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+            .orbit-badge.badge-1 { top: calc(50% - 135px - 16px); left: calc(50% - 16px); }
+            .orbit-badge.badge-2 { top: calc(50% - 68px - 16px); left: calc(50% + 117px - 16px); }
+            .orbit-badge.badge-3 { top: calc(50% + 68px - 16px); left: calc(50% + 117px - 16px); font-size: 11px; }
+            .orbit-badge.badge-4 { top: calc(50% + 135px - 16px); left: calc(50% - 16px); font-size: 12px; }
+            .orbit-badge.badge-5 { top: calc(50% + 68px - 16px); left: calc(50% - 117px - 16px); }
+            .orbit-badge.badge-6 { top: calc(50% - 68px - 16px); left: calc(50% - 117px - 16px); }
+
+            /* About Me & Skills (#page1) - Clean Stacked Layout */
+            #page1 #left {
+                top: 7%;
+                left: 4%;
+                right: 4%;
+                width: auto;
+                max-width: 92vw;
+                min-height: auto;
+                padding: 18px 20px;
+                border-radius: 20px;
+                gap: 8px;
+                z-index: 10;
+            }
+            #page1 #left > h1 {
+                font-size: 1.4rem;
+            }
+            #page1 #left > h3 {
+                font-size: 0.88rem;
+                line-height: 1.45;
+            }
+            #page1 #right {
+                top: auto;
+                bottom: 4%;
+                left: 4%;
+                right: 4%;
+                width: auto;
+                max-width: 92vw;
+                height: auto;
+                max-height: 40vh;
+                padding: 18px 20px;
+                border-radius: 20px;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                z-index: 10;
+            }
+            #page1 #right > h1 {
+                font-size: 1.4rem;
+            }
+            .skills-cloud {
+                position: relative;
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-top: 10px;
+            }
+            .skill-bubble {
+                position: static !important;
+                font-size: 0.82rem;
+                padding: 6px 12px;
+                border-radius: 8px;
+            }
+            .card-icon {
+                display: none !important;
+            }
+
+            /* Featured Projects Orbit Showcase (#page2) */
+            .projects-heading {
+                top: 2.8%;
+                left: 4%;
+            }
+            .projects-heading h1 {
+                font-size: 24px;
+            }
+            .projects-orbit-container {
+                width: 230px;
+                height: 230px;
+            }
+            .projects-orbit-left {
+                left: 50%;
+                top: 31%;
+                transform: translate(-50%, -50%);
+            }
+            .projects-orbit-right {
+                right: auto;
+                left: 50%;
+                top: 73%;
+                transform: translate(-50%, -50%);
+            }
+            .character-center-halo {
+                width: 220px;
+                height: 220px;
+            }
+            .orbit-hover-card {
+                width: 185px !important;
+                min-width: 185px !important;
+                max-width: 185px !important;
+                height: 130px !important;
+                min-height: 130px !important;
+                max-height: 130px !important;
+                padding: 6px 8px !important;
+                border-radius: 14px !important;
+            }
+            .hover-video-screen {
+                height: 54px !important;
+                min-height: 54px !important;
+                max-height: 54px !important;
+                border-radius: 8px !important;
+                margin-bottom: 2px !important;
+            }
+            .hover-video-screen:hover {
+                transform: none !important;
+            }
+            .hover-card-title {
+                font-size: 10px !important;
+                margin-bottom: 1px !important;
+            }
+            .hover-card-desc {
+                font-size: 7.5px !important;
+                height: 18px !important;
+                line-height: 1.25 !important;
+                margin-bottom: 2px !important;
+            }
+            .hover-card-bottom {
+                font-size: 7.5px !important;
+                height: 13px !important;
+                padding-top: 2px !important;
+            }
+            .hover-card-bottom .tech {
+                font-size: 7px !important;
+                max-width: 110px !important;
+            }
+            .hover-card-bottom .action {
+                font-size: 7.5px !important;
+            }
+            .hover-video-rec {
+                font-size: 6px !important;
+                padding: 1px 3px !important;
+            }
+            .hover-video-title {
+                font-size: 7px !important;
+            }
+
+            /* Contact (#page3) - Clean Stacked Layout */
+            .contact-left-card {
+                top: 7%;
+                left: 4%;
+                right: 4%;
+                width: auto;
+                max-width: 92vw;
+                padding: 18px 20px;
+                border-radius: 20px;
+                z-index: 10;
+            }
+            .contact-left-card h1 {
+                font-size: 22px;
+                margin-bottom: 6px;
+            }
+            .contact-left-card p {
+                font-size: 12px;
+                margin-bottom: 12px;
+                line-height: 1.45;
+            }
+            .contact-left-card .info-row {
+                font-size: 11.5px;
+                margin-bottom: 8px;
+                gap: 8px;
+            }
+            .contact-left-card .info-row i {
+                width: 26px;
+                height: 26px;
+                font-size: 11px;
+            }
+            .contact-right-form {
+                top: auto;
+                bottom: 4%;
+                left: 4%;
+                right: 4%;
+                width: auto;
+                max-width: 92vw;
+                padding: 18px 20px;
+                border-radius: 20px;
+                z-index: 10;
+            }
+            .contact-right-form h3 {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+            .contact-input {
+                padding: 8px 12px;
+                font-size: 12px;
+                margin-bottom: 8px;
+                border-radius: 10px;
+            }
+            .submit-btn {
+                padding: 9px;
+                font-size: 12.5px;
+                border-radius: 10px;
+            }
+
+            /* Project Detail Modal */
+            .project-modal-glass {
+                width: 95%;
+                max-width: 480px;
+                max-height: 88vh;
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 16px 18px;
+                border-radius: 20px;
+            }
+            .modal-video-box {
+                height: 175px;
+            }
+            .modal-video-box:hover {
+                transform: none !important;
+            }
+            .modal-title-text {
+                font-size: 17px;
+            }
+            .modal-desc-text {
+                font-size: 11.5px;
+                margin-bottom: 10px;
+            }
+            .modal-meta-grid {
+                gap: 6px;
+                margin-bottom: 10px;
+            }
+            .modal-meta-card {
+                padding: 6px 10px;
+                font-size: 10px;
+            }
+            .modal-tech-wrap {
+                margin-bottom: 10px;
+            }
+            .modal-action-row {
+                padding-top: 10px;
+            }
+            .modal-btn {
+                padding: 6px 14px;
+                font-size: 11.5px;
+            }
+        }
+
+        /* 3. Small Mobile Devices (Screens <= 540px) */
+        @media (max-width: 540px) {
+            #nav {
+                height: 50px;
+                padding: 0 8px;
+            }
+            #nav > h3 {
+                font-size: 12.5px;
+                padding: 4px 8px;
+                letter-spacing: -0.2px;
+            }
+            .button {
+                gap: 3.5px;
+            }
+            .button button {
+                padding: 5px 8px;
+                font-size: 10.5px;
+                gap: 3px;
+            }
+            #theme-text {
+                display: none !important;
+            }
+
+            .hero-left-box .faisal {
+                font-size: 26px;
+            }
+            .hero-left-box h2 {
+                font-size: 16px;
+            }
+            .hero-left-box h4 {
+                font-size: 11.5px;
+            }
+            #page .right1, #page .right2 {
+                font-size: 13px;
+                padding: 4px 10px;
+            }
+
+            .projects-orbit-container {
+                width: 205px;
+                height: 205px;
+            }
+            .orbit-hover-card {
+                width: 165px !important;
+                min-width: 165px !important;
+                max-width: 165px !important;
+                height: 118px !important;
+                min-height: 118px !important;
+                max-height: 118px !important;
+                padding: 5px 7px !important;
+            }
+            .hover-video-screen {
+                height: 48px !important;
+                min-height: 48px !important;
+                max-height: 48px !important;
+            }
+            .hover-card-title {
+                font-size: 9.5px !important;
+            }
+            .hover-card-desc {
+                font-size: 7px !important;
+                height: 16px !important;
+            }
+            .hover-card-bottom {
+                font-size: 7px !important;
+                height: 12px !important;
+            }
+            .hover-card-bottom .tech {
+                font-size: 6.5px !important;
+                max-width: 90px !important;
+            }
+            .character-center-halo {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Feature 1: Minimal Preloader (Asset Loader) -->
+    <div id="preloader">
+        <div class="preloader-box">
+            <div class="preloader-title">FAISAL.DEV // PRELOADING</div>
+            <div class="preloader-counter"><span id="loader-num">0</span>%</div>
+            <div class="preloader-track">
+                <div id="loader-fill" class="preloader-fill"></div>
+            </div>
+            <div class="preloader-sub">3D CANVAS ASSETS INITIALIZING</div>
+        </div>
+    </div>
+
+    <!-- Ambient Sakura Canvas Background -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- 3D Cyberpunk Neon Grid Floor (Active in Cyber Overdrive Mode) -->
+    <div id="cyber-grid-container">
+        <div class="cyber-grid-plane"></div>
+        <div class="cyber-horizon-glow"></div>
+    </div>
+
+    <!-- Expanding Shockwave Ring for Overdrive Activation -->
+    <div id="overdrive-shockwave"></div>
+
+    <!-- Custom Magnetic Micro-Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"><span class="cursor-text"></span></div>
+
+
+    <!-- Floating Avatar Model Switcher -->
+    <div id="avatar-model-switcher" onclick="toggleCharacterModel()" title="Switch between Faisal Anime Face and 300-Frame 3D Sequence">
+        <span id="avatar-switch-badge-icon">⚡</span>
+        <span id="avatar-switch-badge-label">Model: <b>Faisal Anime</b></span>
+        <span class="avatar-switch-badge-hint">⇄ Switch</span>
+    </div>
+
+    <!-- Nav Bar -->
+    <div id="nav">
+        <h3 onclick="toggleOverdrive(event)" title="⚡ Click to engage Cyber Overdrive Mode! (Shortcut: 'O')" style="cursor: pointer;"><b>My</b>PORTFOLIO*</h3>
+        <div class="button">
+            <button class="nav-btn active" data-sec="#page" onclick="scrollToSection('#page')">Home</button>
+            <button class="nav-btn" data-sec="#page1" onclick="scrollToSection('#page1')">About</button>
+            <button class="nav-btn" data-sec="#page2" onclick="scrollToSection('#page2')">Project</button>
+            <button class="nav-btn" data-sec="#page3" onclick="scrollToSection('#page3')">Contact</button>
+            <!-- Dark / Light Mode Switcher -->
+            <button id="theme-btn" onclick="toggleTheme()" title="Toggle Theme (Dark / Light)">
+                <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="main">
+        
+        <!-- PAGE 0: Hero Section -->
+        <div id="page">
+            <div id="loop" onclick="toggleOverdrive(event)" title="⚡ Click to engage Cyber Overdrive Mode!" style="cursor: pointer;">
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+            </div>
+
+            <div class="hero-left-box">
+                <h1 class="faisal">Hi, I'm Faisal.</h1>
+                <h2>Frontend Developer</h2>
+                <h4>
+                    I create beautiful, functional, and user-centered digital experiences.<br>
+                    With 2+ years of experience in web development,<br>
+                    I bring ideas to life through clean code and thoughtful design.
+                </h4>
+
+                <div class="follow">
+                    <p class="followw">Follow me:</p>
+                    <ul>
+                        <li><a href="https://github.com/faisalali06870-commits" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/faisal-ali-66495632a" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.instagram.com/__faisal_ali___?knvt=MXVvaTRqMWsxMmNlZg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3: Action Buttons (Download CV & Contact Me) -->
+                <div class="hero-actions">
+                    <a href="./Faisal_Ali_Resume.pdf" download="Faisal_Ali_Resume.pdf" onclick="triggerResumeDownload(event)" class="hero-btn-action primary" title="Download Faisal Ali Resume PDF">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <span>Download CV</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollToSection('#page3')" class="hero-btn-action secondary">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Contact Me</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right1">UI/UX Designer</div>
+            <div class="right2">Frontend Developer</div>
+
+            <!-- Faisal's original sticker graphic -->
+            <img class="hero-sticker" src="./image1.png" alt="Creative Sticker">
+
+            <!-- Interactive Floating Dialogue Bubble -->
+            <div id="character-dialogue" onclick="triggerCharacterQuote()" title="Click me for fun quotes!">
+                <div class="dialogue-avatar" style="overflow: hidden; padding: 0;">
+                    <img id="dialogue-avatar-img" src="./faisal-avatar.png" alt="Faisal" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; border-radius: 50%; display: block;">
+                </div>
+                <div class="dialogue-inner">
+                    <div class="dialogue-header">
+                        <span class="dialogue-name">FAISAL // COMPANION</span>
+                        <span class="dialogue-badge">INTERACTIVE</span>
+                    </div>
+                    <div id="dialogue-text">Hey! Welcome to my creative universe. Scroll down to explore! 🚀</div>
+                </div>
+                <div class="dialogue-prompt">click me 💬</div>
+            </div>
+
+            <!-- Interactive Magnetic Tech Orbit around Character -->
+            <div id="tech-orbit-container">
+                <div class="orbit-ellipse">
+                    <div class="orbit-badge badge-1" title="React" onclick="handleOrbitClick('React ⚛️')"><i class="fa-brands fa-react"></i></div>
+                    <div class="orbit-badge badge-2" title="JavaScript" onclick="handleOrbitClick('JavaScript ⚡')"><i class="fa-brands fa-js"></i></div>
+                    <div class="orbit-badge badge-3" title="Three.js" onclick="handleOrbitClick('Three.js 🪐')"><span>3D</span></div>
+                    <div class="orbit-badge badge-4" title="Next.js" onclick="handleOrbitClick('Next.js 🚀')"><span>N</span></div>
+                    <div class="orbit-badge badge-5" title="Tailwind CSS" onclick="handleOrbitClick('Tailwind CSS 🎨')"><i class="fa-brands fa-css3-alt"></i></div>
+                    <div class="orbit-badge badge-6" title="Python" onclick="handleOrbitClick('Python 🐍')"><i class="fa-brands fa-python"></i></div>
+                </div>
+            </div>
+
+            <!-- 300-Frame Anime Character Canvas -->
+            <canvas id="character-canvas" onclick="toggleOverdrive(event)"></canvas>
+        </div>
+
+        <!-- PAGE 1: About Me & Skills -->
+        <div id="page1">
+            <div id="left" class="tilt-card">
+                <h1>About Me ...</h1>
+                <h3>Hi! I'm Faisal Ali, a passionate and creative UI/UX Designer and Frontend Developer based in India.</h3>
+                <h3>I’m currently a Final Year Computer Science student, where I’ve developed a deep interest in designing intuitive and visually appealing user interfaces that bring ideas to life on the web.</h3>
+                <h3>I’m particularly focused on modern web design and animation, responsive layouts, and interactive user experiences that blend beauty with functionality.</h3>
+                <h3>
+                    Right now, I’m improving my skills in:<br>
+                    #Tailwind CSS, ReactJs, ThreeJs, GSAP and ThreeJsFiber for frontend development<br>
+                    #Creating personal projects and exploring new web technologies to expand my portfolio
+                </h3>
+            </div>
+
+            <div id="right" class="tilt-card">
+                <h1>Skills</h1>
+                <div class="skills-cloud">
+                    <!-- Text Skill Pills -->
+                    <button class="skill-bubble sk-1">Python</button>
+                    <button class="skill-bubble sk-2">Java</button>
+                    <button class="skill-bubble sk-3">HTML</button>
+                    <button class="skill-bubble sk-4">CSS</button>
+                    <button class="skill-bubble sk-5">Tailwind CSS</button>
+                    <button class="skill-bubble sk-6">JavaScript</button>
+                    <button class="skill-bubble sk-7">React</button>
+                    <button class="skill-bubble sk-8">GSAP</button>
+                    <button class="skill-bubble sk-9">Three.js</button>
+
+                    <!-- Tech Logo Icons Inside Skills Card -->
+                    <img class="card-icon ic-1" src="html5.svg" alt="HTML5" title="HTML5">
+                    <img class="card-icon ic-2" src="css-3.svg" alt="CSS3" title="CSS3">
+                    <img class="card-icon ic-3" src="js.svg" alt="JavaScript" title="JavaScript">
+                    <img class="card-icon ic-4" src="java.svg" alt="Java" title="Java">
+                    <img class="card-icon ic-5" src="reactjs.svg" alt="React" title="React">
+                    <img class="card-icon ic-6" src="next-js.svg" alt="Next.js" title="Next.js">
+                    <img class="card-icon ic-7" src="python.svg" alt="Python" title="Python">
+                    <img class="card-icon ic-8" src="threeJs.png" alt="Three.js" title="Three.js">
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: Twin Circular Orbit Project Showcase -->
+        <div id="page2">
+            <div class="projects-heading">
+                <span class="sub">02 // ORBITAL SHOWCASE</span>
+                <h1>Featured Projects</h1>
+            </div>
+
+            <!-- Central Cyber Circle / Halo behind Anime Character -->
+            <div class="character-center-halo"></div>
+
+            <!-- ============================================== -->
+            <!-- LEFT ORBIT RING: Creative 3D & Frontend -->
+            <!-- ============================================== -->
+            <div class="projects-orbit-container projects-orbit-left">
+                <!-- Center Core Hub Label -->
+                <div class="orbit-hub-label">
+                    <div class="hub-title">Projects</div>
+                </div>
+
+                <!-- Circular Rotating Track (Clockwise) -->
+                <div class="orbit-ring-track orbit-cw">
+                    <!-- Node 1: Cyberfiction 3D (Top) -->
+                    <div class="orbit-node node-top" onclick="openProjectModal('cyberfiction')">
+                        <div class="counter-cw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">⚡</span>01 // 3D CANVAS</span>
+                                    <span class="live-badge">● Live</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // DEMO</div>
+                                    <span style="font-size: 20px;">🎬</span>
+                                    <span class="hover-video-title">300-Frame Image Sync</span>
+                                </div>
+                                <div class="hover-card-title">Cyberfiction 3D Studio</div>
+                                <div class="hover-card-desc">Interactive 300-frame image sequence scroll controller built with GSAP and Locomotive.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">GSAP • Canvas</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 2: Cyberpunk 2077 3D Web Experience (Bottom Right) -->
+                    <div class="orbit-node node-bottom-right" onclick="openProjectModal('cyberpunk')">
+                        <div class="counter-cw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🪖</span>02 // THREE.JS 3D WEB</span>
+                                    <span class="live-badge">● Live on GitHub</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // 3D HELMET</div>
+                                    <video src="./cyberpunk-demo.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                                </div>
+                                <div class="hover-card-title">Cyberpunk 2077 3D</div>
+                                <div class="hover-card-desc">Interactive Three.js 3D Damaged Helmet with HDRI environmental lighting, RGB shift glitch shaders & GSAP mouse tracking.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">Three.js • Shaders • Vite</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 3: Thirtysixstudio Clone (Bottom Left) -->
+                    <div class="orbit-node node-bottom-left" onclick="openProjectModal('thirtysixstudio')">
+                        <div class="counter-cw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🔴</span>03 // CANVAS MOTION</span>
+                                    <span class="live-badge">● Live on GitHub</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // 1,000 FRAMES</div>
+                                    <video src="./thirtysixstudio-demo.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                                </div>
+                                <div class="hover-card-title">Thirtysixstudio Clone</div>
+                                <div class="hover-card-desc">1,000+ image frames at 60 FPS on HTML5 Canvas with signature expanding circle transition & floating 3D peppers.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">React 19 • GSAP 3 • Canvas</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================== -->
+            <!-- RIGHT ORBIT RING: AI & Executive Systems -->
+            <!-- ============================================== -->
+            <div class="projects-orbit-container projects-orbit-right">
+                <!-- Center Core Hub Label -->
+                <div class="orbit-hub-label">
+                    <div class="hub-title">Projects</div>
+                </div>
+
+                <!-- Circular Rotating Track (Counter-Clockwise) -->
+                <div class="orbit-ring-track orbit-ccw">
+                    <!-- Node 4: SENORITA AI (v3.0) (Top) -->
+                    <div class="orbit-node node-top" onclick="openProjectModal('senorita')">
+                        <div class="counter-ccw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🎙️</span>04 // DESKTOP JARVIS AI</span>
+                                    <span class="live-badge">● Live on Render</span>
+                                </div>
+                                <div class="hover-video-screen" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('./senorita-preview.jpg'); background-size: cover; background-position: center;">
+                                    <div class="hover-video-rec">● AI CORE // GEMINI 2.5</div>
+                                </div>
+                                <div class="hover-card-title">SENORITA AI (v3.0)</div>
+                                <div class="hover-card-desc">World-class hands-free desktop JARVIS with zero-click voice, 0.2s screen vision & Windows automation.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">Gemini 2.5 • React • Node</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 5: Moody Player (Bottom Right) -->
+                    <div class="orbit-node node-bottom-right" onclick="openProjectModal('moodyplayer')">
+                        <div class="counter-ccw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🎵</span>05 // AI EMOTION MUSIC</span>
+                                    <span class="live-badge">● Live on GitHub</span>
+                                </div>
+                                <div class="hover-video-screen" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('./moody-preview.jpg'); background-size: cover; background-position: center;">
+                                    <div class="hover-video-rec">● AI VISION // FACE-API.JS</div>
+                                </div>
+                                <div class="hover-card-title">Moody Player</div>
+                                <div class="hover-card-desc">AI face emotion recognition web player that scans webcam expressions and streams curated 320kbps mood tracks.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">React 19 • Face-API • Vite</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 6: Cyber Portfolio V2 (Bottom Left) -->
+                    <div class="orbit-node node-bottom-left" onclick="openProjectModal('cyberportfolio')">
+                        <div class="counter-ccw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🎧</span>06 // CREATIVE SUITE</span>
+                                    <span class="live-badge">● V2</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // AUDIO FX</div>
+                                    <span style="font-size: 20px;">⚡</span>
+                                    <span class="hover-video-title">Synthesizer & Dialogue</span>
+                                </div>
+                                <div class="hover-card-title">Cyber Portfolio V2</div>
+                                <div class="hover-card-desc">Interactive companion dialogue system, Web Audio synthesizer, and floating ambient canvas.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">Web Audio • GSAP</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Place Compact & Translucent Detail Modal (User requested: thoda chota + semi-transparent) -->
+            <div id="project-detail-modal">
+                <div class="project-modal-glass">
+                    <div class="modal-top-bar">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span id="modal-category" class="modal-cat-tag">01 // ANIMATION ENGINE</span>
+                            <span class="hover-card-header live-badge" style="font-size: 8px; margin: 0;">● Live</span>
+                        </div>
+                        <button onclick="closeProjectModal()" class="modal-close-btn" title="Close (ESC)">✕</button>
+                    </div>
+
+                    <div id="modal-video-box" class="modal-video-box" title="Hover: 2X Double-Size Pop-Out">
+                        <div class="modal-video-rec" id="modal-video-rec">● REC // DEMO VIDEO LOOP</div>
+                        <div id="modal-video-inner" class="modal-video-inner">
+                            <div style="font-size: 34px; margin-bottom: 2px;">🎬</div>
+                            <div id="modal-video-title" style="font-size: 13px; font-weight: 700; color: #fff;">Full HD Project Demo Video</div>
+                            <div style="font-size: 10px; color: #a5b4fc; font-family: monospace; margin-top: 2px;">Looping demonstration of interactive user flows</div>
+                        </div>
+                        <img id="modal-preview-img" class="modal-preview-img" src="" alt="Project Live Screenshot" style="display: none;">
+                        <video id="modal-preview-video" class="modal-preview-img" src="" autoplay loop muted playsinline style="display: none;"></video>
+                        <div class="modal-img-zoom-hint" id="modal-zoom-hint" style="display: none;">🔍 Hover: 2X Pop-Out Zoom</div>
+                    </div>
+
+                    <div id="modal-title" class="modal-title-text">Cyberfiction 3D Studio</div>
+                    <div id="modal-desc" class="modal-desc-text">Interactive 300-frame image sequence scroll controller synced dynamically with GSAP ScrollTrigger.</div>
+
+                    <div class="modal-meta-grid">
+                        <div class="modal-meta-card">
+                            <span class="meta-lbl">Architecture</span>
+                            <span id="modal-highlight" style="font-weight: 600;">60 FPS Canvas Sequence</span>
+                        </div>
+                        <div class="modal-meta-card">
+                            <span class="meta-lbl">Deployment</span>
+                            <span id="modal-deploy" style="font-weight: 600;">Vercel Edge Global CDN</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-tech-wrap">
+                        <div class="lbl">Technologies Used:</div>
+                        <div id="modal-tech-list" class="modal-tech-pills"></div>
+                    </div>
+
+                    <div class="modal-action-row">
+                        <button onclick="closeProjectModal()" class="modal-btn secondary">Close</button>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <a id="modal-code-link" href="https://github.com" target="_blank" class="modal-btn secondary"><i class="fa-brands fa-github"></i> Code ↗</a>
+                            <a id="modal-live-link" href="javascript:void(0)" target="_blank" class="modal-btn primary">Launch App ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PAGE 3: Contact & Connect -->
+        <div id="page3">
+            <!-- Left Info Card -->
+            <div class="contact-left-card tilt-card">
+                <h1>Let's Connect</h1>
+                <p>Interested in collaborating, hiring for a frontend role, or creating something creative together? Drop me a line!</p>
+                <div class="info-row" style="cursor: pointer;" onclick="copyEmail('faisalali06870@gmail.com')" title="Click to copy email">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>faisalali06870@gmail.com</span>
+                    <span id="copy-badge" style="font-size: 10px; opacity: 0.6; margin-left: auto;">(Click to copy)</span>
+                </div>
+                <div class="info-row" style="cursor: pointer;" onclick="window.open('tel:+917307751593')" title="Call or WhatsApp">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 73077 51593</span>
+                    <span style="font-size: 10px; opacity: 0.6; margin-left: auto;">(Call / WhatsApp)</span>
+                </div>
+                <div class="info-row">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Lucknow, Uttar Pradesh, India</span>
+                </div>
+                <div class="info-row">
+                    <i class="fa-solid fa-circle-check" style="background: #16a34a; color: #fff;"></i>
+                    <span>Available for Full-time & Freelance Roles</span>
+                </div>
+
+                <!-- Social Connect Links Row -->
+                <div class="contact-social-row">
+                    <a href="https://github.com/faisalali06870-commits" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub (@faisalali06870-commits)">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/faisal-ali-66495632a" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn Profile (faisal-ali)">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/__faisal_ali___?knvt=MXVvaTRqMWsxMmNlZg==" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram Profile (__faisal_ali___)">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/917307751593" target="_blank" rel="noopener noreferrer" class="social-icon-btn wa-btn" title="Direct WhatsApp (+91 73077 51593)">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:faisalali06870@gmail.com" class="social-icon-btn" title="Send Email (faisalali06870@gmail.com)">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </a>
+                    <a href="./Faisal_Ali_Resume.pdf" download="Faisal_Ali_Resume.pdf" onclick="triggerResumeDownload(event)" class="social-icon-btn" title="Download Faisal's Resume PDF">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Message Form (Silent Background Dispatch - No Launcher) -->
+            <form class="contact-right-form tilt-card" onsubmit="handleContactSubmit(event)">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <h3 style="margin: 0;">Send a Message</h3>
+                    <span style="font-size: 11px; color: #10b981; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                        <i class="fa-solid fa-bolt" style="font-size: 12px;"></i> Instant Delivery
+                    </span>
+                </div>
+                <input type="text" placeholder="Your Name" class="contact-input" required>
+                <input type="email" placeholder="Your Email" class="contact-input" required>
+                <textarea placeholder="Your Message..." rows="3" class="contact-input" style="resize: none;" required></textarea>
+                <button type="submit" class="submit-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Send Message 🚀</span>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+    <script>
+        // 1. Locomotive Scroll + GSAP ScrollTrigger Integration
+        let locoScroll;
+        function initLocomotive() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            locoScroll = new LocomotiveScroll({
+                el: document.querySelector("#main"),
+                smooth: true,
+                smartphone: {
+                    smooth: true
+                },
+                tablet: {
+                    smooth: true
+                }
+            });
+
+            locoScroll.on("scroll", (args) => {
+                ScrollTrigger.update();
+                updateActiveNavOnScroll(args);
+            });
+
+            ScrollTrigger.scrollerProxy("#main", {
+                scrollTop(value) {
+                    return arguments.length
+                        ? locoScroll.scrollTo(value, 0, 0)
+                        : locoScroll.scroll.instance.scroll.y;
+                },
+                getBoundingClientRect() {
+                    return {
+                        top: 0,
+                        left: 0,
+                        width: window.innerWidth,
+                        height: window.innerHeight,
+                    };
+                },
+                pinType: document.querySelector("#main").style.transform ? "transform" : "fixed",
+            });
+
+            ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+            ScrollTrigger.refresh();
+        }
+        initLocomotive();
+
+        // ====================================================
+        // Feature 2: Sci-Fi / Anime Micro-Sound Effects Engine
+        // Web Audio API Synthesizer (Zero-latency, 100% native)
+        // ====================================================
+        let audioCtx = null;
+        let soundEnabled = true;
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    audioCtx = new AudioContext();
+                }
+            }
+            if (audioCtx && audioCtx.state === "suspended") {
+                audioCtx.resume();
+            }
+        }
+
+        function toggleSound() {
+            initAudioContext();
+            soundEnabled = !soundEnabled;
+            const soundIcon = document.getElementById("sound-icon");
+            const soundText = document.getElementById("sound-text");
+            const soundBtn = document.getElementById("sound-btn");
+
+            if (soundEnabled) {
+                if (soundIcon) soundIcon.textContent = "🔊";
+                if (soundText) soundText.textContent = "Sound";
+                if (soundBtn) soundBtn.classList.add("sound-on");
+                playSciFiChime(520, 880, "sine", 0.16);
+            } else {
+                if (soundIcon) soundIcon.textContent = "🔇";
+                if (soundText) soundText.textContent = "Muted";
+                if (soundBtn) soundBtn.classList.remove("sound-on");
+            }
+            localStorage.setItem("portfolio-sound", soundEnabled ? "on" : "off");
+        }
+
+        function playSciFiClick() {
+            if (!soundEnabled || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(950, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(450, audioCtx.currentTime + 0.05);
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.05);
+            } catch(e) {}
+        }
+
+        function playSciFiChime(startFreq = 440, endFreq = 880, type = "sine", duration = 0.2) {
+            if (!soundEnabled || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(startFreq, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(endFreq, audioCtx.currentTime + duration);
+                gain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }
+
+        function playDialoguePop() {
+            if (!soundEnabled || !audioCtx) return;
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "triangle";
+                osc.frequency.setValueAtTime(580, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1150, audioCtx.currentTime + 0.09);
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.09);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.09);
+            } catch(e) {}
+        }
+
+        // ====================================================
+        // Feature: ⚡ Cyberpunk Overdrive / Hyperdrive Engine
+        // ====================================================
+        let isOverdriveMode = false;
+
+        function playOverdriveActivateSound() {
+            if (!audioCtx) return;
+            try {
+                const now = audioCtx.currentTime;
+
+                // 1. Futuristic energy buildup pitch sweep
+                const osc1 = audioCtx.createOscillator();
+                const gain1 = audioCtx.createGain();
+                osc1.type = "sawtooth";
+                osc1.frequency.setValueAtTime(140, now);
+                osc1.frequency.exponentialRampToValueAtTime(1200, now + 0.42);
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = "lowpass";
+                filter.frequency.setValueAtTime(400, now);
+                filter.frequency.exponentialRampToValueAtTime(8000, now + 0.42);
+
+                gain1.gain.setValueAtTime(0.01, now);
+                gain1.gain.linearRampToValueAtTime(0.22, now + 0.35);
+                gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.48);
+
+                osc1.connect(filter);
+                filter.connect(gain1);
+                gain1.connect(audioCtx.destination);
+                osc1.start(now);
+                osc1.stop(now + 0.48);
+
+                // 2. Heavy Sub-Bass Boom & Laser Impact
+                setTimeout(() => {
+                    if (!audioCtx) return;
+                    try {
+                        const impactNow = audioCtx.currentTime;
+                        const subOsc = audioCtx.createOscillator();
+                        const subGain = audioCtx.createGain();
+                        subOsc.type = "sine";
+                        subOsc.frequency.setValueAtTime(180, impactNow);
+                        subOsc.frequency.exponentialRampToValueAtTime(42, impactNow + 0.6);
+
+                        subGain.gain.setValueAtTime(0.35, impactNow);
+                        subGain.gain.exponentialRampToValueAtTime(0.0001, impactNow + 0.65);
+
+                        subOsc.connect(subGain);
+                        subGain.connect(audioCtx.destination);
+                        subOsc.start(impactNow);
+                        subOsc.stop(impactNow + 0.65);
+
+                        const laser = audioCtx.createOscillator();
+                        const laserGain = audioCtx.createGain();
+                        laser.type = "triangle";
+                        laser.frequency.setValueAtTime(2400, impactNow);
+                        laser.frequency.exponentialRampToValueAtTime(600, impactNow + 0.25);
+                        laserGain.gain.setValueAtTime(0.18, impactNow);
+                        laserGain.gain.exponentialRampToValueAtTime(0.0001, impactNow + 0.25);
+                        laser.connect(laserGain);
+                        laserGain.connect(audioCtx.destination);
+                        laser.start(impactNow);
+                        laser.stop(impactNow + 0.25);
+                    } catch(e) {}
+                }, 320);
+            } catch(e) {}
+        }
+
+        function playOverdriveDeactivateSound() {
+            if (!audioCtx) return;
+            try {
+                const now = audioCtx.currentTime;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = "sine";
+                osc.frequency.setValueAtTime(900, now);
+                osc.frequency.exponentialRampToValueAtTime(110, now + 0.4);
+                gain.gain.setValueAtTime(0.18, now);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.45);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + 0.45);
+            } catch(e) {}
+        }
+
+        function toggleOverdrive(e) {
+            initAudioContext();
+            isOverdriveMode = !isOverdriveMode;
+
+            const body = document.body;
+            const btn = document.getElementById("overdrive-btn");
+            const text = document.getElementById("overdrive-text");
+            const shockwave = document.getElementById("overdrive-shockwave");
+            const bubbleText = document.getElementById("dialogue-text");
+
+            const originX = (e && e.clientX) ? e.clientX : window.innerWidth / 2;
+            const originY = (e && e.clientY) ? e.clientY : window.innerHeight / 2;
+
+            if (isOverdriveMode) {
+                body.classList.add("cyber-overdrive");
+                if (btn) btn.classList.add("overdrive-active");
+                if (text) text.textContent = "Overdrive ON";
+
+                playOverdriveActivateSound();
+
+                // Expanding Thirtysixstudio-style shockwave
+                if (shockwave && window.gsap) {
+                    gsap.killTweensOf(shockwave);
+                    gsap.set(shockwave, {
+                        left: originX,
+                        top: originY,
+                        width: 20,
+                        height: 20,
+                        scale: 0,
+                        opacity: 1
+                    });
+                    gsap.to(shockwave, {
+                        scale: 90,
+                        opacity: 0,
+                        duration: 0.95,
+                        ease: "power2.out"
+                    });
+                }
+
+                if (bubbleText) {
+                    let sectionOverdriveMsg = "⚡ HYPERDRIVE ACTIVATED! Cyberpunk Overdrive Mode engaged across all sections! 🚀🔥";
+                    if (typeof currentActiveSec !== "undefined") {
+                        if (currentActiveSec === "#page1") {
+                            sectionOverdriveMsg = "⚡ CYBER OVERDRIVE ENGAGED! Neural Frontend Matrix & Skills overclocked to 300%! ⚡";
+                        } else if (currentActiveSec === "#page2") {
+                            sectionOverdriveMsg = "⚡ HYPERDRIVE ACTIVE! Warp field pulsing around Featured Projects! 🪐🚀";
+                        } else if (currentActiveSec === "#page3") {
+                            sectionOverdriveMsg = "⚡ OVERDRIVE UPLINK ONLINE! Direct encrypted neural channel ready for hire! 📬✨";
+                        }
+                    }
+                    bubbleText.textContent = sectionOverdriveMsg;
+                    if (typeof isCustomQuoteActive !== "undefined") {
+                        isCustomQuoteActive = true;
+                        clearTimeout(customQuoteTimer);
+                        customQuoteTimer = setTimeout(() => {
+                            isCustomQuoteActive = false;
+                            if (typeof updateDialogueForSection === "function") {
+                                updateDialogueForSection(currentActiveSec);
+                            }
+                        }, 5000);
+                    }
+                }
+
+                const bubble = document.getElementById("character-dialogue");
+                if (bubble) {
+                    bubble.style.transform = "translate(-50%, -10px) scale(1.06)";
+                    setTimeout(() => { bubble.style.transform = ""; }, 240);
+                }
+            } else {
+                body.classList.remove("cyber-overdrive");
+                if (btn) btn.classList.remove("overdrive-active");
+                if (text) text.textContent = "Overdrive";
+
+                playOverdriveDeactivateSound();
+
+                if (bubbleText) {
+                    bubbleText.textContent = "Overdrive disengaged. Returning to calm ambient mode across all sections. ✨";
+                    if (typeof isCustomQuoteActive !== "undefined") {
+                        isCustomQuoteActive = true;
+                        clearTimeout(customQuoteTimer);
+                        customQuoteTimer = setTimeout(() => {
+                            isCustomQuoteActive = false;
+                            if (typeof updateDialogueForSection === "function") {
+                                updateDialogueForSection(currentActiveSec);
+                            }
+                        }, 3500);
+                    }
+                }
+
+                const bubble = document.getElementById("character-dialogue");
+                if (bubble) {
+                    bubble.style.transform = "translate(-50%, -10px) scale(1.06)";
+                    setTimeout(() => { bubble.style.transform = ""; }, 240);
+                }
+            }
+
+            const cursorTextEl = document.querySelector("#cursor-ring .cursor-text");
+            if (cursorTextEl && document.body.classList.contains("cursor-hover")) {
+                cursorTextEl.textContent = isOverdriveMode ? "NORMAL ✨" : "OVERDRIVE ⚡";
+            }
+        }
+
+        // Keyboard shortcut 'O' for Overdrive toggle
+        window.addEventListener("keydown", (e) => {
+            if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+            if (e.key === "o" || e.key === "O") {
+                toggleOverdrive();
+            }
+        });
+
+        function scrollToSection(selector) {
+            initAudioContext();
+            playSciFiClick();
+            if (typeof setActiveSection === "function") {
+                setActiveSection(selector);
+            }
+            if (locoScroll) {
+                if (selector === "#page" || selector === "top") {
+                    locoScroll.scrollTo(0);
+                } else {
+                    const target = document.querySelector(selector);
+                    if (target) {
+                        locoScroll.scrollTo(target);
+                    }
+                }
+            }
+        }
+
+        // 2. Dark / Light Mode Switcher Function
+        function toggleTheme() {
+            initAudioContext();
+            document.body.classList.toggle("dark-mode");
+            const isDark = document.body.classList.contains("dark-mode");
+            document.getElementById("theme-icon").textContent = isDark ? "☀️" : "🌙";
+            document.getElementById("theme-text").textContent = isDark ? "Light" : "Dark";
+            localStorage.setItem("portfolio-theme", isDark ? "dark" : "light");
+
+            if (isDark) {
+                playSciFiChime(320, 800, "sine", 0.18);
+            } else {
+                playSciFiChime(800, 320, "sine", 0.18);
+            }
+        }
+
+        // Remember user theme preference
+        if (localStorage.getItem("portfolio-theme") === "dark") {
+            toggleTheme();
+        }
+
+        // Remember user sound preference
+        if (localStorage.getItem("portfolio-sound") === "on") {
+            toggleSound();
+        }
+
+        // ----------------------------------------------------
+        // Action Handlers (Resume, Clipboard & Contact Gateways)
+        // ----------------------------------------------------
+        // WhatsApp & Email Gateways (Zero-launcher silent notification)
+        const CALLMEBOT_API_KEY = ""; // Enter CallMeBot WhatsApp API Key (Free)
+        const WEB3FORMS_ACCESS_KEY = ""; // Enter Web3Forms Gmail Key (Free) 
+
+        function triggerResumeDownload() {
+            initAudioContext();
+            playSciFiClick();
+            const btn = document.querySelector(".hero-btn-action.primary");
+            if (btn) {
+                const orig = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Preparing CV...</span>';
+                
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Downloaded! ✓</span>';
+                    
+                    // Trigger actual download of Faisal_Ali_Resume.pdf
+                    const link = document.createElement("a");
+                    link.href = "./Faisal_Ali_Resume.pdf";
+                    link.download = "Faisal_Ali_Resume.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    setTimeout(() => { btn.innerHTML = orig; }, 2400);
+                }, 600);
+            }
+        }
+
+        function copyEmail(email) {
+            initAudioContext();
+            playSciFiClick();
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(email);
+            }
+            const badge = document.getElementById("copy-badge");
+            if (badge) {
+                badge.textContent = "Copied! ✓";
+                badge.style.color = "#16a34a";
+                badge.style.opacity = "1";
+                setTimeout(() => {
+                    badge.textContent = "(Click to copy)";
+                    badge.style.color = "";
+                    badge.style.opacity = "0.6";
+                }, 2200);
+            }
+        }
+
+        async function handleContactSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const btn = form.querySelector("button[type='submit']");
+            const nameInput = form.querySelector("input[type='text']");
+            const emailInput = form.querySelector("input[type='email']");
+            const msgInput = form.querySelector("textarea");
+            const name = nameInput ? nameInput.value.trim() : "Visitor";
+            const email = emailInput ? emailInput.value.trim() : "";
+            const message = msgInput ? msgInput.value.trim() : "";
+            const orig = btn ? btn.innerHTML : "Send Message 🚀";
+
+            if (btn) {
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+                btn.disabled = true;
+            }
+
+            // Clean format for WhatsApp Notification
+            const waNotificationText = `🔥 *New Portfolio Message for Faisal!*\n\n` +
+                                       `👤 *Name:* ${name}\n` +
+                                       `📧 *Email:* ${email}\n` +
+                                       `💬 *Message:* ${message}`;
+
+            try {
+                // 1. Silent Background WhatsApp Delivery (Zero launcher, visitor stays on site)
+                if (CALLMEBOT_API_KEY && CALLMEBOT_API_KEY.length > 3) {
+                    const waApiUrl = `https://api.callmebot.com/whatsapp.php?phone=917307751593&text=${encodeURIComponent(waNotificationText)}&apikey=${CALLMEBOT_API_KEY}`;
+                    fetch(waApiUrl, { mode: "no-cors" }).catch(() => {});
+                }
+
+                // 2. Background Email Delivery (Web3Forms to faisalali06870@gmail.com)
+                if (WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY.length > 5) {
+                    await fetch("https://api.web3forms.com/submit", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json", Accept: "application/json" },
+                        body: JSON.stringify({ 
+                            access_key: WEB3FORMS_ACCESS_KEY, 
+                            name, 
+                            email, 
+                            message,
+                            from_name: "Portfolio Visitor"
+                        })
+                    }).catch(() => {});
+                } else {
+                    // Smooth local fallback animation delay
+                    await new Promise(r => setTimeout(r, 700));
+                }
+
+                // Smooth On-Page Success Feedback (No window / No launcher!)
+                if (btn) {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent! 🚀';
+                    btn.style.background = "#16a34a";
+                    btn.style.color = "#ffffff";
+                    setTimeout(() => {
+                        btn.innerHTML = orig;
+                        btn.style.background = "";
+                        btn.style.color = "";
+                        btn.disabled = false;
+                    }, 3500);
+                }
+                form.reset();
+
+                // Interactive companion dialogue reaction
+                initAudioContext();
+                playSciFiChime(520, 960, "sine", 0.22);
+                const bubbleText = document.getElementById("dialogue-text");
+                if (bubbleText) {
+                    bubbleText.textContent = `Thanks ${name}! Your message has been dispatched directly to Faisal (+91 73077 51593)! 🚀✨`;
+                    isCustomQuoteActive = true;
+                    clearTimeout(customQuoteTimer);
+                    customQuoteTimer = setTimeout(() => {
+                        isCustomQuoteActive = false;
+                        updateDialogueForSection(currentActiveSec);
+                    }, 6500);
+                }
+            } catch(err) {
+                if (btn) {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent! 🚀';
+                    btn.style.background = "#16a34a";
+                    btn.style.color = "#ffffff";
+                    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ""; btn.style.color = ""; btn.disabled = false; }, 2500);
+                }
+                form.reset();
+            }
+        }
+
+        // ----------------------------------------------------
+        // Feature 1: Preloader & 300-Frame Image Preloading
+        // ----------------------------------------------------
+        const canvas = document.getElementById("character-canvas");
+        const context = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener("resize", function () {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            render();
+        });
+
+        function files(index) {
+            return `./male${String(index + 1).padStart(4, '0')}.png`;
+        }
+
+        const frameCount = 300;
+        const images = [];
+        const imageSeq = { frame: 0 };
+
+        const loaderNum = document.getElementById("loader-num");
+        const loaderFill = document.getElementById("loader-fill");
+        const preloader = document.getElementById("preloader");
+        let loadedAssets = 0;
+        let isPreloaderComplete = false;
+
+        function updateLoaderProgress(percent) {
+            if (isPreloaderComplete) return;
+            const p = Math.min(100, Math.round(percent));
+            if (loaderNum) loaderNum.textContent = p;
+            if (loaderFill) loaderFill.style.width = p + "%";
+
+            if (p >= 100) {
+                finishPreloader();
+            }
+        }
+
+        function finishPreloader() {
+            if (isPreloaderComplete) return;
+            isPreloaderComplete = true;
+
+            if (loaderNum) loaderNum.textContent = "100";
+            if (loaderFill) loaderFill.style.width = "100%";
+            if (preloader) {
+                preloader.style.pointerEvents = "none";
+                preloader.classList.add("preloader-hidden");
+            }
+
+            try { render(); } catch(e) {}
+            try { initHeroEntrance(); } catch(e) {}
+            try { if (locoScroll) locoScroll.update(); } catch(e) {}
+            try { if (window.ScrollTrigger) ScrollTrigger.refresh(); } catch(e) {}
+
+            setTimeout(() => {
+                if (preloader) {
+                    preloader.style.display = "none";
+                }
+            }, 600);
+        }
+
+        // Guaranteed safety unlock (ensures preloader NEVER stays frozen on 100%)
+        setTimeout(() => {
+            if (!isPreloaderComplete) {
+                finishPreloader();
+            }
+        }, 1800);
+
+        for (let i = 0; i < frameCount; i++) {
+            const img = new Image();
+            img.onload = () => {
+                loadedAssets++;
+                if (i === 0) render();
+                const progress = (loadedAssets / frameCount) * 100;
+                updateLoaderProgress(progress);
+            };
+            img.onerror = () => {
+                loadedAssets++;
+                const progress = (loadedAssets / frameCount) * 100;
+                updateLoaderProgress(progress);
+            };
+            img.src = files(i);
+            images.push(img);
+        }
+
+        // Smooth simulated fallback so preloader always unlocks cleanly
+        let simProgress = 0;
+        const simTimer = setInterval(() => {
+            if (isPreloaderComplete) {
+                clearInterval(simTimer);
+                return;
+            }
+            simProgress += Math.floor(Math.random() * 8) + 4;
+            const actualProgress = (loadedAssets / frameCount) * 100;
+            updateLoaderProgress(Math.max(simProgress, actualProgress));
+            if (simProgress >= 100) {
+                clearInterval(simTimer);
+                finishPreloader();
+            }
+        }, 60);
+
+        // ====================================================
+        // Feature: Personalized Anime Avatar with Breathing & 3D Mouse Parallax
+        // Switchable with 1-Click to Original 300-Frame 3D Sequence
+        // ====================================================
+        let activeCharacterModel = "faisal"; // Default: Faisal Anime Avatar!
+
+        const faisalAvatarImg = new Image();
+        faisalAvatarImg.src = "./faisal-avatar.png";
+        faisalAvatarImg.onload = () => {
+            if (activeCharacterModel === "faisal") render();
+        };
+
+        let avatarMouseX = 0.5;
+        let avatarMouseY = 0.5;
+        let avatarTargetX = 0.5;
+        let avatarTargetY = 0.5;
+
+        window.addEventListener("mousemove", (e) => {
+            avatarTargetX = e.clientX / window.innerWidth;
+            avatarTargetY = e.clientY / window.innerHeight;
+        });
+
+        function renderFaisalAvatar(ctx) {
+            if (!faisalAvatarImg.complete || !faisalAvatarImg.naturalWidth) return;
+            const c = ctx.canvas;
+            ctx.clearRect(0, 0, c.width, c.height);
+
+            const isMobile = window.innerWidth <= 900;
+            const targetHeight = isMobile ? c.height * 0.68 : c.height * 0.78;
+            const scale = targetHeight / faisalAvatarImg.naturalHeight;
+            const drawW = faisalAvatarImg.naturalWidth * scale;
+            const drawH = faisalAvatarImg.naturalHeight * scale;
+
+            // Smooth ease for mouse parallax tracking
+            avatarMouseX += (avatarTargetX - avatarMouseX) * 0.08;
+            avatarMouseY += (avatarTargetY - avatarMouseY) * 0.08;
+            const parallaxX = (avatarMouseX - 0.5) * (isMobile ? 0 : 32);
+            const parallaxY = (avatarMouseY - 0.5) * (isMobile ? 0 : 18);
+
+            // Subtle natural breathing oscillation
+            const breathe = Math.sin(Date.now() * 0.0024) * 4.5;
+
+            const x = (c.width - drawW) / 2 + parallaxX;
+            const y = c.height - drawH + parallaxY + breathe;
+
+            ctx.drawImage(faisalAvatarImg, 0, 0, faisalAvatarImg.naturalWidth, faisalAvatarImg.naturalHeight, x, y, drawW, drawH);
+        }
+
+        gsap.to(imageSeq, {
+            frame: frameCount - 1,
+            snap: "frame",
+            ease: "none",
+            scrollTrigger: {
+                scrub: 0.15,
+                trigger: "#character-canvas",
+                start: "top top",
+                end: "600% top",
+                scroller: "#main",
+            },
+            onUpdate: render,
+        });
+
+        function render() {
+            try {
+                if (activeCharacterModel === "faisal") {
+                    renderFaisalAvatar(context);
+                } else {
+                    if (images[imageSeq.frame] && images[imageSeq.frame].complete) {
+                        scaleImageAtBottom(images[imageSeq.frame], context);
+                    }
+                }
+            } catch(e) {}
+        }
+
+        function scaleImageAtBottom(img, ctx) {
+            if (!img || !img.naturalWidth || !img.naturalHeight) return;
+            const c = ctx.canvas;
+            const targetHeight = c.height * 0.82;
+            const scale = targetHeight / img.naturalHeight;
+            const drawWidth = img.width * scale;
+            const drawHeight = img.height * scale;
+
+            const x = (c.width - drawWidth) / 2;
+            const y = c.height - drawHeight;
+
+            ctx.clearRect(0, 0, c.width, c.height);
+            ctx.drawImage(img, 0, 0, img.width, img.height, x, y, drawWidth, drawHeight);
+        }
+
+        // Smooth continuous loop for breathing & mouse tracking
+        function characterLoop() {
+            if (activeCharacterModel === "faisal") {
+                render();
+            }
+            requestAnimationFrame(characterLoop);
+        }
+        characterLoop();
+
+        function toggleCharacterModel() {
+            initAudioContext();
+            if (activeCharacterModel === "faisal") {
+                activeCharacterModel = "sequence";
+                if (typeof playSciFiChime === "function") playSciFiChime(440, 880, "triangle", 0.18);
+            } else {
+                activeCharacterModel = "faisal";
+                if (typeof playSciFiChime === "function") playSciFiChime(880, 440, "sine", 0.18);
+            }
+
+            // Update UI Badges & Dialogue
+            const label = document.getElementById("avatar-switch-badge-label");
+            const icon = document.getElementById("avatar-switch-badge-icon");
+            const bubbleText = document.getElementById("dialogue-text");
+
+            if (activeCharacterModel === "faisal") {
+                if (label) label.innerHTML = "Model: <b>Faisal Anime</b>";
+                if (icon) icon.textContent = "⚡";
+                if (bubbleText) bubbleText.textContent = "Switched to Faisal Anime Avatar! Natural breathing & 3D parallax active! ✨";
+            } else {
+                if (label) label.innerHTML = "Model: <b>300-Frame 3D</b>";
+                if (icon) icon.textContent = "🎞️";
+                if (bubbleText) bubbleText.textContent = "Switched to 300-Frame 3D sequence! Scroll to rotate! 🚀";
+            }
+
+            render();
+        }
+
+        ScrollTrigger.create({
+            trigger: "#character-canvas",
+            pin: true,
+            scroller: "#main",
+            start: "top top",
+            end: "600% top",
+        });
+
+
+
+        // ----------------------------------------------------
+        // Feature 3: Interactive Character Dialogue System
+        // ----------------------------------------------------
+        let currentActiveSec = "#page";
+        let isCustomQuoteActive = false;
+        let customQuoteTimer = null;
+
+        const sectionDialogueMap = {
+            "#page": "Hey! Welcome to my creative universe. Scroll down to explore! 🚀",
+            "#page1": "Final Year CS student & passionate creative developer! 💻",
+            "#page2": "Check out my featured builds — click 'Live' or 'Code'! ⚡",
+            "#page3": "Let's collaborate or hire me for your team! 📬"
+        };
+
+        function updateDialogueForSection(secId) {
+            if (isCustomQuoteActive) return;
+            const bubbleText = document.getElementById("dialogue-text");
+            if (bubbleText && sectionDialogueMap[secId]) {
+                bubbleText.textContent = sectionDialogueMap[secId];
+            }
+        }
+
+        const easterEggQuotes = [
+            "Scroll to watch me lift my head up and turn towards my skills and featured projects! 🔄⚡",
+            "Personalized anime avatar with natural breathing & 3D mouse parallax tracking! 🎨🚀",
+            "Rocking my new custom anime face with the white suit! 👔✨",
+            "Click 'Switch' in the bottom-left to toggle between my anime avatar and the 300-frame 3D sequence! ⚡⇄🎞️",
+            "Fun Fact: 300 individual frames are synced dynamically to your scroll! 🎞️",
+            "Anime + Clean Code + Coffee = Everyday superpower! ☕⚡",
+            "Built with GSAP ScrollTrigger, Locomotive & pure creative passion! ✨",
+            "Did you try switching between Dark and Light mode in the top right? 🌙",
+            "Three.js & modern animation are what bring the web alive! 🔮",
+            "Hover over the project cards to see 3D glass tilt and glare! 💎",
+            "Looking for a frontend developer for your dream team? Faisal is ready! 🚀"
+        ];
+        let quoteIndex = 0;
+
+        function triggerCharacterQuote() {
+            initAudioContext();
+            playDialoguePop();
+            const bubbleText = document.getElementById("dialogue-text");
+            const bubble = document.getElementById("character-dialogue");
+            if (!bubbleText) return;
+
+            quoteIndex = (quoteIndex + 1) % easterEggQuotes.length;
+            bubbleText.textContent = easterEggQuotes[quoteIndex];
+
+            if (bubble) {
+                bubble.style.transform = "translate(-50%, -10px) scale(1.06)";
+                setTimeout(() => {
+                    bubble.style.transform = "";
+                }, 220);
+            }
+
+            isCustomQuoteActive = true;
+            clearTimeout(customQuoteTimer);
+            customQuoteTimer = setTimeout(() => {
+                isCustomQuoteActive = false;
+                updateDialogueForSection(currentActiveSec);
+            }, 6000);
+        }
+
+        function handleOrbitClick(techName) {
+            initAudioContext();
+            playDialoguePop();
+            const bubbleText = document.getElementById("dialogue-text");
+            const bubble = document.getElementById("character-dialogue");
+            if (!bubbleText) return;
+
+            bubbleText.textContent = `Mastering ${techName} for ultra-clean interactive web apps! ✨`;
+
+            if (bubble) {
+                bubble.style.transform = "translate(-50%, -10px) scale(1.06)";
+                setTimeout(() => {
+                    bubble.style.transform = "";
+                }, 220);
+            }
+
+            isCustomQuoteActive = true;
+            clearTimeout(customQuoteTimer);
+            customQuoteTimer = setTimeout(() => {
+                isCustomQuoteActive = false;
+                updateDialogueForSection(currentActiveSec);
+            }, 6000);
+        }
+
+        // ----------------------------------------------------
+        // Real-Time Active Section Navigation Sync
+        // ----------------------------------------------------
+        function setActiveSection(secId) {
+            if (currentActiveSec !== secId) {
+                currentActiveSec = secId;
+                updateDialogueForSection(secId);
+            }
+            document.querySelectorAll(".button .nav-btn").forEach(btn => {
+                if (btn.getAttribute("data-sec") === secId) {
+                    btn.classList.add("active");
+                } else {
+                    btn.classList.remove("active");
+                }
+            });
+        }
+
+        function updateActiveNavOnScroll(args) {
+            if (!args || !args.scroll) return;
+            const scrollY = args.scroll.y;
+            const limitY = args.limit ? args.limit.y : (locoScroll && locoScroll.scroll && locoScroll.scroll.instance && locoScroll.scroll.instance.limit ? locoScroll.scroll.instance.limit.y : 0);
+            const mid = window.innerHeight * 0.45;
+
+            // 1. If at bottom of page -> Contact (#page3) guaranteed
+            if (limitY > 0 && scrollY >= limitY - 120) {
+                setActiveSection("#page3");
+                return;
+            }
+
+            // 2. If at top of page -> Home (#page) guaranteed
+            if (scrollY <= 140) {
+                setActiveSection("#page");
+                return;
+            }
+
+            // 3. Middle sections: check viewport midpoint intersection
+            const p1 = document.getElementById("page1");
+            const p2 = document.getElementById("page2");
+            const p3 = document.getElementById("page3");
+
+            const r3 = p3 ? p3.getBoundingClientRect() : null;
+            const r2 = p2 ? p2.getBoundingClientRect() : null;
+            const r1 = p1 ? p1.getBoundingClientRect() : null;
+
+            if (r3 && r3.top <= mid && r3.bottom >= mid) {
+                setActiveSection("#page3");
+            } else if (r2 && r2.top <= mid && r2.bottom >= mid) {
+                setActiveSection("#page2");
+            } else if (r1 && r1.top <= mid && r1.bottom >= mid) {
+                setActiveSection("#page1");
+            } else if (r3 && r3.top <= mid) {
+                setActiveSection("#page3");
+            } else if (r2 && r2.top <= mid) {
+                setActiveSection("#page2");
+            } else if (r1 && r1.top <= mid) {
+                setActiveSection("#page1");
+            } else {
+                setActiveSection("#page");
+            }
+        }
+
+        // ----------------------------------------------------
+        // Hero Entrance
+        // ----------------------------------------------------
+        function initHeroEntrance() {
+            gsap.from(".hero-left-box", { opacity: 0, y: 35, duration: 1, ease: "power3.out" });
+            gsap.from("#page .right1, #page .right2", { opacity: 0, x: 40, stagger: 0.15, duration: 0.9, delay: 0.25, ease: "power3.out" });
+        }
+
+        // ----------------------------------------------------
+        // Smooth Page Pinning (Original Cyberfiction Engine)
+        // Cards are stable, solid, and ready - NO late jumping animations!
+        // ----------------------------------------------------
+        gsap.to("#page1", {
+            scrollTrigger: {
+                trigger: "#page1",
+                start: "top top",
+                end: "bottom top",
+                pin: true,
+                scroller: "#main"
+            }
+        });
+
+        gsap.to("#page2", {
+            scrollTrigger: {
+                trigger: "#page2",
+                start: "top top",
+                end: "bottom top",
+                pin: true,
+                scroller: "#main"
+            }
+        });
+
+        gsap.to("#page3", {
+            scrollTrigger: {
+                trigger: "#page3",
+                start: "top top",
+                end: "bottom top",
+                pin: true,
+                scroller: "#main"
+            }
+        });
+
+        // 4. 3D Card Tilt & Dynamic Glass Glare across ALL Cards
+        document.querySelectorAll(".tilt-card").forEach(card => {
+            const glare = document.createElement("div");
+            glare.className = "card-glare";
+            card.appendChild(glare);
+
+            card.addEventListener("mousemove", (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const xPercent = (x / rect.width) - 0.5;
+                const yPercent = (y / rect.height) - 0.5;
+
+                card.style.transition = "transform 0.08s ease-out";
+                card.style.transform = `perspective(1000px) rotateX(${ -yPercent * 7 }deg) rotateY(${ xPercent * 7 }deg) translateY(-4px)`;
+                glare.style.opacity = "1";
+                glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.12) 35%, transparent 65%)`;
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transition = "transform 0.4s ease-out";
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+                glare.style.opacity = "0";
+            });
+        });
+
+        // ----------------------------------------------------
+        // Feature: Twin Circular Orbit Project Details & Modal
+        // ----------------------------------------------------
+        const projectData = {
+            cyberfiction: {
+                category: "01 // ANIMATION ENGINE",
+                title: "Cyberfiction 3D Studio",
+                desc: "Interactive 300-frame image sequence scroll controller synced dynamically with GSAP ScrollTrigger and Locomotive Scroll. Delivers 60 FPS silky smooth performance across desktop and mobile devices.",
+                videoTitle: "Cyberfiction 3D Canvas Video",
+                highlight: "60 FPS Canvas Sequence",
+                deploy: "Vercel Edge Global CDN",
+                tech: ["GSAP 3", "HTML5 Canvas", "Locomotive", "Web Audio API"],
+                codeUrl: "https://github.com/faisalali",
+                liveUrl: "https://cyberfiction.faisal.dev"
+            },
+            webgl: {
+                category: "02 // 3D WEBGL WORLD",
+                title: "WebGL Interactive Universe",
+                desc: "Custom WebGL GLSL shaders, camera transitions, and dynamic particle systems built with Three.js. Includes responsive lighting, bloom effects, and orbital camera physics.",
+                videoTitle: "Three.js WebGL Shaders Video",
+                highlight: "Custom GLSL Shaders",
+                deploy: "Cloudflare Pages CDN",
+                tech: ["Three.js", "GLSL Shaders", "WebGL", "Math Physics"],
+                codeUrl: "https://github.com/faisalali",
+                liveUrl: "https://webgl-universe.dev"
+            },
+            thirtysixstudio: {
+                category: "03 // CREATIVE CANVAS & MOTION",
+                title: "Thirtysixstudio Clone",
+                desc: "Award-winning digital agency website clone featuring over 1,000 continuous image frames rendered at 60 FPS on HTML5 Canvas. Includes signature dynamic expanding circle screen transition, dark-to-red theme inversion, and floating 3D peppers animation.",
+                videoTitle: "Thirtysixstudio 1,000-Frame Canvas & Transition Demo",
+                previewVideo: "./thirtysixstudio-demo.mp4",
+                highlight: "1,000+ Canvas Frames & Circle Transition",
+                deploy: "GitHub Pages + GitHub Actions CI/CD",
+                tech: ["React 19", "Vite 8", "GSAP 3", "HTML5 Canvas", "Tailwind CSS 4", "Git CI/CD"],
+                codeUrl: "https://github.com/faisalali06870-commits/Threesixstudio",
+                liveUrl: "https://faisalali06870-commits.github.io/Threesixstudio/"
+            },
+            senorita: {
+                category: "04 // MULTIMODAL DESKTOP AI",
+                title: "SENORITA AI (v3.0)",
+                desc: "The World-Class Hands-Free Desktop JARVIS & Cloud Executive AI Companion. Zero-click continuous voice listening ('Senorita sun rahi ho tum?'), 0.2s desktop screen vision analysis, native Windows workstation & app automation (WhatsApp, VS Code, volume control), in-app music streaming, and multi-device pairing over local Wi-Fi with a confident Hinglish persona.",
+                videoTitle: "Senorita AI Live Assistant Demo",
+                previewImg: "./senorita-preview.jpg",
+                highlight: "Zero-Click Voice & Vision",
+                deploy: "Render Cloud + Windows 11 Host",
+                tech: ["Gemini 2.5 Flash", "React 18", "Node.js (ESM)", "Tailwind CSS", "Web Speech API", "Edge Neural TTS", "PowerShell Automation"],
+                codeUrl: "https://github.com/faisalali06870-commits/senorita-AI",
+                liveUrl: "https://senorita-ai.onrender.com"
+            },
+            moodyplayer: {
+                category: "05 // AI EMOTION MUSIC APP",
+                title: "Moody Player",
+                desc: "Real-time AI-powered emotion & mood music web application. Uses Computer Vision and face-api.js (TensorFlow.js) to scan facial expressions across 8 emotions (Romantic, Happy, Sad, Neutral, etc.) via webcam and automatically plays curated 320kbps Bollywood, Pakistani, and classic Hindustani masterpieces. Features rotating vinyl disc deck, dynamic ambient glow, universal worldwide search, and custom playlists.",
+                videoTitle: "Moody Player Real-Time AI Face & Vinyl Demo",
+                previewImg: "./moody-preview.jpg",
+                highlight: "Real-Time Face-API Emotion Sync",
+                deploy: "GitHub Pages + GitHub Actions CI/CD",
+                tech: ["React 19", "Vite 8", "face-api.js", "TensorFlow.js", "Node.js", "Express.js", "MongoDB", "Remix Icon", "HTML5 Audio API"],
+                codeUrl: "https://github.com/faisalali06870-commits/Moody-Player",
+                liveUrl: "https://faisalali06870-commits.github.io/Moody-Player/"
+            },
+            cyberpunk: {
+                category: "02 // THREE.JS 3D WEB EXPERIENCE",
+                title: "Cyberpunk 2077 3D Experience",
+                desc: "Futuristic interactive 3D landing page web application based on the Cyberpunk 2077 theme. Renders a high-resolution sci-fi 3D Damaged Helmet model with Polyhaven 32-bit HDRI environmental lighting, realistic PBR metal and glass reflections, smooth GSAP mouse tracking, and real-time EffectComposer post-processing chromatic aberration (RGB shift glitch) shaders with Locomotive smooth scrolling.",
+                videoTitle: "Cyberpunk 2077 3D Helmet & Post-Processing Demo",
+                previewVideo: "./cyberpunk-demo.mp4",
+                highlight: "PBR 3D Helmet & RGB Shift Shader",
+                deploy: "GitHub Pages + GitHub Actions CI/CD",
+                tech: ["Three.js (v0.185)", "GLTFLoader", "RGBELoader", "OrbitControls", "EffectComposer", "RGBShiftShader", "GSAP 3.15", "Locomotive Scroll", "Tailwind CSS", "Vite 8"],
+                codeUrl: "https://github.com/faisalali06870-commits/cyberpunk",
+                liveUrl: "https://faisalali06870-commits.github.io/cyberpunk/"
+            },
+            cyberportfolio: {
+                category: "06 // CREATIVE SUITE",
+                title: "Cyber Portfolio V2",
+                desc: "Interactive portfolio featuring native Web Audio synthesizer, dialogue companion system, ambient canvas petals, and smooth Locomotive Scroll.",
+                videoTitle: "Web Audio & Dialogue System Video",
+                highlight: "Web Audio API Synthesizer",
+                deploy: "GitHub Pages / Vercel",
+                tech: ["Web Audio API", "GSAP 3", "Canvas 2D", "Locomotive"],
+                codeUrl: "https://github.com/faisalali",
+                liveUrl: "https://faisal.dev"
+            }
+        };
+
+        function openProjectModal(key) {
+            initAudioContext();
+            if (typeof playSciFiChime === "function") {
+                playSciFiChime(520, 1040, "sine", 0.22);
+            }
+            const data = projectData[key];
+            if (!data) return;
+
+            const catEl = document.getElementById("modal-category");
+            if (catEl) catEl.textContent = data.category;
+            const titleEl = document.getElementById("modal-title");
+            if (titleEl) titleEl.textContent = data.title;
+            const descEl = document.getElementById("modal-desc");
+            if (descEl) descEl.textContent = data.desc;
+            const vTitleEl = document.getElementById("modal-video-title");
+            if (vTitleEl) vTitleEl.textContent = data.videoTitle;
+            const hlEl = document.getElementById("modal-highlight");
+            if (hlEl) hlEl.textContent = data.highlight;
+            const depEl = document.getElementById("modal-deploy");
+            if (depEl) depEl.textContent = data.deploy;
+
+            const techBox = document.getElementById("modal-tech-list");
+            if (techBox) {
+                techBox.innerHTML = "";
+                data.tech.forEach(t => {
+                    const span = document.createElement("span");
+                    span.className = "modal-tech-pill";
+                    span.textContent = t;
+                    techBox.appendChild(span);
+                });
+            }
+
+            const liveBtn = document.getElementById("modal-live-link");
+            if (liveBtn) liveBtn.href = data.liveUrl;
+            const codeBtn = document.getElementById("modal-code-link");
+            if (codeBtn) codeBtn.href = data.codeUrl;
+
+            const pImg = document.getElementById("modal-preview-img");
+            const pVideo = document.getElementById("modal-preview-video");
+            const vInner = document.getElementById("modal-video-inner");
+            const zHint = document.getElementById("modal-zoom-hint");
+            const vRec = document.getElementById("modal-video-rec");
+            const vBox = document.getElementById("modal-video-box");
+
+            if (data.previewVideo) {
+                if (pVideo) {
+                    pVideo.src = data.previewVideo;
+                    pVideo.style.display = "block";
+                    pVideo.play().catch(() => {});
+                }
+                if (pImg) pImg.style.display = "none";
+                if (vInner) vInner.style.display = "none";
+                if (zHint) {
+                    zHint.textContent = "🔍 Hover: 2X Pop-Out Zoom";
+                    zHint.style.display = "block";
+                }
+                if (vRec) vRec.innerHTML = "● LIVE // HD 3D DEMO VIDEO";
+                if (vBox) vBox.style.backgroundImage = "";
+            } else if (data.previewImg) {
+                if (pVideo) {
+                    pVideo.pause();
+                    pVideo.style.display = "none";
+                    pVideo.src = "";
+                }
+                if (pImg) {
+                    pImg.src = data.previewImg;
+                    pImg.style.display = "block";
+                }
+                if (vInner) vInner.style.display = "none";
+                if (zHint) {
+                    zHint.textContent = "🔍 Hover: 2X Pop-Out Zoom";
+                    zHint.style.display = "block";
+                }
+                if (vRec) vRec.innerHTML = "● LIVE // HD PREVIEW";
+                if (vBox) vBox.style.backgroundImage = "";
+            } else {
+                if (pVideo) {
+                    pVideo.pause();
+                    pVideo.style.display = "none";
+                    pVideo.src = "";
+                }
+                if (pImg) pImg.style.display = "none";
+                if (vInner) vInner.style.display = "flex";
+                if (zHint) zHint.style.display = "none";
+                if (vRec) vRec.innerHTML = "● REC // DEMO VIDEO LOOP";
+                if (vBox) vBox.style.backgroundImage = "";
+            }
+
+            const modal = document.getElementById("project-detail-modal");
+            if (modal) {
+                modal.classList.add("active");
+            }
+        }
+
+        function closeProjectModal() {
+            initAudioContext();
+            if (typeof playSciFiClick === "function") {
+                playSciFiClick();
+            }
+            const pVideo = document.getElementById("modal-preview-video");
+            if (pVideo) {
+                pVideo.pause();
+            }
+            const modal = document.getElementById("project-detail-modal");
+            if (modal) {
+                modal.classList.remove("active");
+            }
+        }
+
+        // Close on Escape or click outside
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeProjectModal();
+            }
+        });
+
+        const modalOverlay = document.getElementById("project-detail-modal");
+        if (modalOverlay) {
+            modalOverlay.addEventListener("click", (e) => {
+                if (e.target === modalOverlay) {
+                    closeProjectModal();
+                }
+            });
+        }
+
+
+
+        // 5. Delicate Micro-Cursor
+        const cursorDot = document.getElementById("cursor-dot");
+        const cursorRing = document.getElementById("cursor-ring");
+        const cursorText = cursorRing.querySelector(".cursor-text");
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let ringX = mouseX;
+        let ringY = mouseY;
+
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+
+            // Feature 5: Magnetic Parallax Tilt for Tech Orbit
+            const orbit = document.getElementById("tech-orbit-container");
+            if (orbit) {
+                const xOffset = (e.clientX / window.innerWidth - 0.5) * 22;
+                const yOffset = (e.clientY / window.innerHeight - 0.5) * 22;
+                orbit.style.transform = `translate(calc(-50% + ${xOffset}px), calc(-50% + ${yOffset}px))`;
+            }
+        });
+
+        function renderCursorRing() {
+            ringX += (mouseX - ringX) * 0.18;
+            ringY += (mouseY - ringY) * 0.18;
+            cursorRing.style.left = `${ringX}px`;
+            cursorRing.style.top = `${ringY}px`;
+            requestAnimationFrame(renderCursorRing);
+        }
+        renderCursorRing();
+
+        // Orbit Project Nodes Hover & Touch -> EXPLORE ↗ & Smooth Pause on Node Hover / Touch
+        document.querySelectorAll(".orbit-node").forEach(node => {
+            const pauseOrbit = () => {
+                const track = node.closest(".orbit-ring-track");
+                if (track) {
+                    track.style.animationPlayState = "paused";
+                    track.querySelectorAll(".counter-cw, .counter-ccw").forEach(c => c.style.animationPlayState = "paused");
+                }
+            };
+            const resumeOrbit = () => {
+                const track = node.closest(".orbit-ring-track");
+                if (track) {
+                    track.style.animationPlayState = "running";
+                    track.querySelectorAll(".counter-cw, .counter-ccw").forEach(c => c.style.animationPlayState = "running");
+                }
+            };
+
+            node.addEventListener("mouseenter", () => {
+                document.body.classList.add("cursor-hover");
+                cursorText.textContent = "EXPLORE ↗";
+                pauseOrbit();
+            });
+
+            node.addEventListener("mouseleave", () => {
+                document.body.classList.remove("cursor-hover");
+                cursorText.textContent = "";
+                resumeOrbit();
+            });
+
+            // Touch support for mobile and tablet devices
+            node.addEventListener("touchstart", () => {
+                pauseOrbit();
+            }, { passive: true });
+        });
+
+        // ----------------------------------------------------
+        // Smart Non-Blocking Character Interaction (Click & Hover)
+        // Does NOT block scrolling, and NEVER blocks floating orbit cards!
+        // ----------------------------------------------------
+        function isPointOnCharacter(clientX, clientY) {
+            const centerX = window.innerWidth / 2;
+            const charWidth = window.innerWidth <= 900 ? 220 : 280;
+            const halfW = charWidth / 2;
+            const charTop = window.innerHeight * 0.20; // Head to bottom
+            const charBottom = window.innerHeight;
+
+            return (clientX >= centerX - halfW && clientX <= centerX + halfW && clientY >= charTop && clientY <= charBottom);
+        }
+
+        function isClickOnInteractiveElement(target) {
+            if (!target) return false;
+            return !!target.closest(
+                "button, a, input, textarea, select, .orbit-hover-card, .orbit-node, .orbit-badge, " +
+                "#avatar-model-switcher, #character-dialogue, #project-detail-modal, .modal-close-btn, #nav, .tilt-card"
+            );
+        }
+
+        // Global smart click handler for Character Overdrive
+        window.addEventListener("click", (e) => {
+            // If the user clicked on an interactive UI element, card, or button -> do nothing, let it handle the event!
+            if (isClickOnInteractiveElement(e.target)) return;
+
+            // If the user clicked directly on the character zone -> Toggle Overdrive!
+            if (isPointOnCharacter(e.clientX, e.clientY)) {
+                toggleOverdrive(e);
+            }
+        });
+
+        // Global smart hover handler for Cursor text ("OVERDRIVE ⚡")
+        window.addEventListener("mousemove", (e) => {
+            if (!cursorText) return;
+
+            const isInteractive = isClickOnInteractiveElement(e.target);
+
+            if (!isInteractive && isPointOnCharacter(e.clientX, e.clientY)) {
+                document.body.classList.add("cursor-hover");
+                cursorText.textContent = isOverdriveMode ? "NORMAL ✨" : "OVERDRIVE ⚡";
+            } else if (!isInteractive) {
+                if (document.body.classList.contains("cursor-hover") && 
+                    (cursorText.textContent.includes("OVERDRIVE") || cursorText.textContent.includes("NORMAL"))) {
+                    document.body.classList.remove("cursor-hover");
+                    cursorText.textContent = "";
+                }
+            }
+        });
+
+        // Dialogue Bubble Hover -> CHAT 💬
+        const dialogueEl = document.getElementById("character-dialogue");
+        if (dialogueEl && cursorText) {
+            dialogueEl.addEventListener("mouseenter", () => {
+                document.body.classList.add("cursor-hover");
+                cursorText.textContent = "CHAT 💬";
+            });
+            dialogueEl.addEventListener("mouseleave", () => {
+                document.body.classList.remove("cursor-hover");
+                cursorText.textContent = "";
+            });
+        }
+
+        // Orbit Badges Hover -> TECH ⚡
+        document.querySelectorAll(".orbit-badge").forEach(badge => {
+            badge.addEventListener("mouseenter", () => {
+                document.body.classList.add("cursor-hover");
+                cursorText.textContent = "TECH ⚡";
+            });
+            badge.addEventListener("mouseleave", () => {
+                document.body.classList.remove("cursor-hover");
+                cursorText.textContent = "";
+            });
+        });
+
+        // Interactive Elements Hover
+        document.querySelectorAll("button, a, .skill-btn, .action-btn, #nav > h3, .skill-bubble, .card-icon, .info-row, #character-dialogue").forEach(el => {
+            el.addEventListener("mouseenter", () => {
+                document.body.classList.add("cursor-button");
+            });
+            el.addEventListener("mouseleave", () => {
+                document.body.classList.remove("cursor-button");
+            });
+        });
+
+        // 6. Subtle Floating Anime Ambient Petals (Canvas)
+        const ambientCanvas = document.getElementById("ambient-canvas");
+        const aCtx = ambientCanvas.getContext("2d");
+
+        ambientCanvas.width = window.innerWidth;
+        ambientCanvas.height = window.innerHeight;
+
+        window.addEventListener("resize", () => {
+            ambientCanvas.width = window.innerWidth;
+            ambientCanvas.height = window.innerHeight;
+        });
+
+        const petalCount = 35;
+        const petals = [];
+        const neonSparkColors = ["#00f0ff", "#ff007f", "#38bdf8", "#fbbf24", "#d946ef"];
+
+        for (let i = 0; i < petalCount; i++) {
+            petals.push({
+                x: Math.random() * ambientCanvas.width,
+                y: Math.random() * ambientCanvas.height,
+                size: Math.random() * 4.5 + 3.5,
+                speedY: Math.random() * 0.5 + 0.25,
+                speedX: Math.random() * 0.3 - 0.15,
+                angle: Math.random() * Math.PI * 2,
+                angularSpeed: (Math.random() - 0.5) * 0.02,
+                opacity: Math.random() * 0.12 + 0.08,
+                color: neonSparkColors[i % neonSparkColors.length],
+                sparkLength: Math.random() * 20 + 12
+            });
+        }
+
+        function drawPetals() {
+            aCtx.clearRect(0, 0, ambientCanvas.width, ambientCanvas.height);
+            const isDark = document.body.classList.contains("dark-mode");
+
+            petals.forEach(p => {
+                if (isOverdriveMode) {
+                    // Hyperdrive High-Speed Neon Electric Sparks / Data Beams
+                    p.y -= (p.speedY * 5.8 + 2.8); // Rush upwards into the cyber sky
+                    p.x += Math.sin(p.angle) * 1.6 + p.speedX * 2;
+                    p.angle += p.angularSpeed * 3;
+
+                    if (p.y < -35) {
+                        p.y = ambientCanvas.height + 35;
+                        p.x = Math.random() * ambientCanvas.width;
+                    }
+                    if (p.x > ambientCanvas.width + 35) p.x = -35;
+                    if (p.x < -35) p.x = ambientCanvas.width + 35;
+
+                    aCtx.save();
+                    aCtx.shadowBlur = 14;
+                    aCtx.shadowColor = p.color;
+                    aCtx.strokeStyle = p.color;
+                    aCtx.lineWidth = 2;
+                    aCtx.globalAlpha = Math.min(1, p.opacity * 4.5);
+
+                    // High-energy vertical electric spark beam
+                    aCtx.beginPath();
+                    aCtx.moveTo(p.x, p.y);
+                    aCtx.lineTo(p.x + (Math.random() - 0.5) * 2.5, p.y + p.sparkLength);
+                    aCtx.stroke();
+                    aCtx.restore();
+                } else {
+                    // Calm Floating Anime Sakura Petals
+                    p.y += p.speedY;
+                    p.x += Math.sin(p.angle) * 0.35 + p.speedX;
+                    p.angle += p.angularSpeed;
+
+                    if (p.y > ambientCanvas.height + 20) {
+                        p.y = -20;
+                        p.x = Math.random() * ambientCanvas.width;
+                    }
+                    if (p.x > ambientCanvas.width + 20) p.x = -20;
+                    if (p.x < -20) p.x = ambientCanvas.width + 20;
+
+                    aCtx.save();
+                    aCtx.translate(p.x, p.y);
+                    aCtx.rotate(p.angle);
+                    
+                    // Moonlight luminous petals in dark mode, soft graphite in light mode
+                    aCtx.fillStyle = isDark
+                        ? `rgba(180, 205, 240, ${p.opacity * 1.6})`
+                        : `rgba(35, 35, 45, ${p.opacity})`;
+                    
+                    aCtx.beginPath();
+                    aCtx.ellipse(0, 0, p.size, p.size * 0.55, 0, 0, Math.PI * 2);
+                    aCtx.fill();
+                    aCtx.restore();
+                }
+            });
+
+            requestAnimationFrame(drawPetals);
+        }
+        drawPetals();
+    </script>
+</body>
+</html>

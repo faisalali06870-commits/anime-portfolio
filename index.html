@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faisal Ali | Creative Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+        <!-- Core Modular Stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+    <!-- Feature 1: Minimal Preloader (Asset Loader) -->
+    <div id="preloader">
+        <div class="preloader-box">
+            <div class="preloader-title">FAISAL.DEV // PRELOADING</div>
+            <div class="preloader-counter"><span id="loader-num">0</span>%</div>
+            <div class="preloader-track">
+                <div id="loader-fill" class="preloader-fill"></div>
+            </div>
+            <div class="preloader-sub">3D CANVAS ASSETS INITIALIZING</div>
+        </div>
+    </div>
+
+    <!-- Ambient Sakura Canvas Background -->
+    <canvas id="ambient-canvas"></canvas>
+
+    <!-- 3D Cyberpunk Neon Grid Floor (Active in Cyber Overdrive Mode) -->
+    <div id="cyber-grid-container">
+        <div class="cyber-grid-plane"></div>
+        <div class="cyber-horizon-glow"></div>
+    </div>
+
+    <!-- Expanding Shockwave Ring for Overdrive Activation -->
+    <div id="overdrive-shockwave"></div>
+
+    <!-- Custom Magnetic Micro-Cursor -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"><span class="cursor-text"></span></div>
+
+    <!-- Floating Avatar Model Switcher -->
+    <div id="avatar-model-switcher" onclick="toggleCharacterModel()" title="Switch between Faisal Anime Face and 300-Frame 3D Sequence">
+        <span id="avatar-switch-badge-icon">⚡</span>
+        <span id="avatar-switch-badge-label">Model: <b>Faisal Anime</b></span>
+        <span class="avatar-switch-badge-hint">⇄ Switch</span>
+    </div>
+
+    <!-- Nav Bar -->
+    <div id="nav">
+        <h3 onclick="toggleOverdrive(event)" title="⚡ Click to engage Cyber Overdrive Mode! (Shortcut: 'O')" style="cursor: pointer;"><b>My</b>PORTFOLIO*</h3>
+        <div class="button">
+            <button class="nav-btn active" data-sec="#page" onclick="scrollToSection('#page')">Home</button>
+            <button class="nav-btn" data-sec="#page1" onclick="scrollToSection('#page1')">About</button>
+            <button class="nav-btn" data-sec="#page2" onclick="scrollToSection('#page2')">Project</button>
+            <button class="nav-btn" data-sec="#page3" onclick="scrollToSection('#page3')">Contact</button>
+            <!-- Dark / Light Mode Switcher -->
+            <button id="theme-btn" onclick="toggleTheme()" title="Toggle Theme (Dark / Light)">
+                <span id="theme-icon">🌙</span> <span id="theme-text">Dark</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div id="main">
+        
+        <!-- PAGE 0: Hero Section -->
+        <div id="page">
+            <div id="loop" onclick="toggleOverdrive(event)" title="⚡ Click to engage Cyber Overdrive Mode!" style="cursor: pointer;">
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+                <h1><b>WELCOME</b> <span><i>To</i></span> <b><i>My</i></b> <span><i>Portfolio.</i></span></h1>
+            </div>
+
+            <div class="hero-left-box">
+                <h1 class="faisal">Hi, I'm Faisal.</h1>
+                <h2>Frontend Developer</h2>
+                <h4>
+                    I create beautiful, functional, and user-centered digital experiences.<br>
+                    With 2+ years of experience in web development,<br>
+                    I bring ideas to life through clean code and thoughtful design.
+                </h4>
+
+                <div class="follow">
+                    <p class="followw">Follow me:</p>
+                    <ul>
+                        <li><a href="https://github.com/faisalali06870-commits" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fa-brands fa-github"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/faisal-ali-66495632a" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.instagram.com/__faisal_ali___?knvt=MXVvaTRqMWsxMmNlZg==" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+                <!-- Feature 3: Action Buttons (Download CV & Contact Me) -->
+                <div class="hero-actions">
+                    <a href="./Faisal_Ali_Resume.pdf" download="Faisal_Ali_Resume.pdf" onclick="triggerResumeDownload(event)" class="hero-btn-action primary" title="Download Faisal Ali Resume PDF">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <span>Download CV</span>
+                    </a>
+                    <a href="javascript:void(0)" onclick="scrollToSection('#page3')" class="hero-btn-action secondary">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Contact Me</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="right1">UI/UX Designer</div>
+            <div class="right2">Frontend Developer</div>
+
+            <!-- Faisal's original sticker graphic -->
+            <img class="hero-sticker" src="./image1.png" alt="Creative Sticker">
+
+            <!-- Interactive Floating Dialogue Bubble -->
+            <div id="character-dialogue" onclick="triggerCharacterQuote()" title="Click me for fun quotes!">
+                <div class="dialogue-avatar" style="overflow: hidden; padding: 0;">
+                    <img id="dialogue-avatar-img" src="./faisal-avatar.png" alt="Faisal" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; border-radius: 50%; display: block;">
+                </div>
+                <div class="dialogue-inner">
+                    <div class="dialogue-header">
+                        <span class="dialogue-name">FAISAL // COMPANION</span>
+                        <span class="dialogue-badge">INTERACTIVE</span>
+                    </div>
+                    <div id="dialogue-text">Hey! Welcome to my creative universe. Scroll down to explore! 🚀</div>
+                </div>
+                <div class="dialogue-prompt">click me 💬</div>
+            </div>
+
+            <!-- Interactive Magnetic Tech Orbit around Character -->
+            <div id="tech-orbit-container">
+                <div class="orbit-ellipse">
+                    <div class="orbit-badge badge-1" title="React" onclick="handleOrbitClick('React ⚛️')"><i class="fa-brands fa-react"></i></div>
+                    <div class="orbit-badge badge-2" title="JavaScript" onclick="handleOrbitClick('JavaScript ⚡')"><i class="fa-brands fa-js"></i></div>
+                    <div class="orbit-badge badge-3" title="Three.js" onclick="handleOrbitClick('Three.js 🪐')"><span>3D</span></div>
+                    <div class="orbit-badge badge-4" title="Next.js" onclick="handleOrbitClick('Next.js 🚀')"><span>N</span></div>
+                    <div class="orbit-badge badge-5" title="Tailwind CSS" onclick="handleOrbitClick('Tailwind CSS 🎨')"><i class="fa-brands fa-css3-alt"></i></div>
+                    <div class="orbit-badge badge-6" title="Python" onclick="handleOrbitClick('Python 🐍')"><i class="fa-brands fa-python"></i></div>
+                </div>
+            </div>
+
+            <!-- 300-Frame Anime Character Canvas -->
+            <canvas id="character-canvas" onclick="toggleOverdrive(event)"></canvas>
+        </div>
+
+        <!-- PAGE 1: About Me & Skills -->
+        <div id="page1">
+            <div id="left" class="tilt-card">
+                <h1>About Me ...</h1>
+                <h3>Hi! I'm Faisal Ali, a passionate and creative UI/UX Designer and Frontend Developer based in India.</h3>
+                <h3>I’m currently a Final Year Computer Science student, where I’ve developed a deep interest in designing intuitive and visually appealing user interfaces that bring ideas to life on the web.</h3>
+                <h3>I’m particularly focused on modern web design and animation, responsive layouts, and interactive user experiences that blend beauty with functionality.</h3>
+                <h3>
+                    Right now, I’m improving my skills in:<br>
+                    #Tailwind CSS, ReactJs, ThreeJs, GSAP and ThreeJsFiber for frontend development<br>
+                    #Creating personal projects and exploring new web technologies to expand my portfolio
+                </h3>
+            </div>
+
+            <div id="right" class="tilt-card">
+                <h1>Skills</h1>
+                <div class="skills-cloud">
+                    <!-- Text Skill Pills -->
+                    <button class="skill-bubble sk-1">Python</button>
+                    <button class="skill-bubble sk-2">Java</button>
+                    <button class="skill-bubble sk-3">HTML</button>
+                    <button class="skill-bubble sk-4">CSS</button>
+                    <button class="skill-bubble sk-5">Tailwind CSS</button>
+                    <button class="skill-bubble sk-6">JavaScript</button>
+                    <button class="skill-bubble sk-7">React</button>
+                    <button class="skill-bubble sk-8">GSAP</button>
+                    <button class="skill-bubble sk-9">Three.js</button>
+
+                    <!-- Tech Logo Icons Inside Skills Card -->
+                    <img class="card-icon ic-1" src="html5.svg" alt="HTML5" title="HTML5">
+                    <img class="card-icon ic-2" src="css-3.svg" alt="CSS3" title="CSS3">
+                    <img class="card-icon ic-3" src="js.svg" alt="JavaScript" title="JavaScript">
+                    <img class="card-icon ic-4" src="java.svg" alt="Java" title="Java">
+                    <img class="card-icon ic-5" src="reactjs.svg" alt="React" title="React">
+                    <img class="card-icon ic-6" src="next-js.svg" alt="Next.js" title="Next.js">
+                    <img class="card-icon ic-7" src="python.svg" alt="Python" title="Python">
+                    <img class="card-icon ic-8" src="threeJs.png" alt="Three.js" title="Three.js">
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE 2: Twin Circular Orbit Project Showcase -->
+        <div id="page2">
+            <div class="projects-heading">
+                <span class="sub">02 // ORBITAL SHOWCASE</span>
+                <h1>Featured Projects</h1>
+            </div>
+
+            <!-- Central Cyber Circle / Halo behind Anime Character -->
+            <div class="character-center-halo"></div>
+
+            <!-- ============================================== -->
+            <!-- LEFT ORBIT RING: Creative 3D & Frontend -->
+            <!-- ============================================== -->
+            <div class="projects-orbit-container projects-orbit-left">
+                <!-- Center Core Hub Label -->
+                <div class="orbit-hub-label">
+                    <div class="hub-title">Projects</div>
+                </div>
+
+                <!-- Circular Rotating Track (Clockwise) -->
+                <div class="orbit-ring-track orbit-cw">
+                    <!-- Node 1: Cyberfiction 3D (Top) -->
+                    <div class="orbit-node node-top" onclick="openProjectModal('cyberfiction')">
+                        <div class="counter-cw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">⚡</span>01 // 3D CANVAS</span>
+                                    <span class="live-badge">● Live</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // DEMO</div>
+                                    <span style="font-size: 20px;">🎬</span>
+                                    <span class="hover-video-title">300-Frame Image Sync</span>
+                                </div>
+                                <div class="hover-card-title">Cyberfiction 3D Studio</div>
+                                <div class="hover-card-desc">Interactive 300-frame image sequence scroll controller built with GSAP and Locomotive.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">GSAP • Canvas</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 2: Cyberpunk 2077 3D Web Experience (Bottom Right) -->
+                    <div class="orbit-node node-bottom-right" onclick="openProjectModal('cyberpunk')">
+                        <div class="counter-cw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🪖</span>02 // THREE.JS 3D WEB</span>
+                                    <span class="live-badge">● Live on GitHub</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // 3D HELMET</div>
+                                    <video src="./cyberpunk-demo.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                                </div>
+                                <div class="hover-card-title">Cyberpunk 2077 3D</div>
+                                <div class="hover-card-desc">Interactive Three.js 3D Damaged Helmet with HDRI environmental lighting, RGB shift glitch shaders & GSAP mouse tracking.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">Three.js • Shaders • Vite</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 3: Thirtysixstudio Clone (Bottom Left) -->
+                    <div class="orbit-node node-bottom-left" onclick="openProjectModal('thirtysixstudio')">
+                        <div class="counter-cw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🔴</span>03 // CANVAS MOTION</span>
+                                    <span class="live-badge">● Live on GitHub</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // 1,000 FRAMES</div>
+                                    <video src="./thirtysixstudio-demo.mp4" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover;"></video>
+                                </div>
+                                <div class="hover-card-title">Thirtysixstudio Clone</div>
+                                <div class="hover-card-desc">1,000+ image frames at 60 FPS on HTML5 Canvas with signature expanding circle transition & floating 3D peppers.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">React 19 • GSAP 3 • Canvas</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================== -->
+            <!-- RIGHT ORBIT RING: AI & Executive Systems -->
+            <!-- ============================================== -->
+            <div class="projects-orbit-container projects-orbit-right">
+                <!-- Center Core Hub Label -->
+                <div class="orbit-hub-label">
+                    <div class="hub-title">Projects</div>
+                </div>
+
+                <!-- Circular Rotating Track (Counter-Clockwise) -->
+                <div class="orbit-ring-track orbit-ccw">
+                    <!-- Node 4: SENORITA AI (v3.0) (Top) -->
+                    <div class="orbit-node node-top" onclick="openProjectModal('senorita')">
+                        <div class="counter-ccw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🎙️</span>04 // DESKTOP JARVIS AI</span>
+                                    <span class="live-badge">● Live on Render</span>
+                                </div>
+                                <div class="hover-video-screen" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('./senorita-preview.jpg'); background-size: cover; background-position: center;">
+                                    <div class="hover-video-rec">● AI CORE // GEMINI 2.5</div>
+                                </div>
+                                <div class="hover-card-title">SENORITA AI (v3.0)</div>
+                                <div class="hover-card-desc">World-class hands-free desktop JARVIS with zero-click voice, 0.2s screen vision & Windows automation.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">Gemini 2.5 • React • Node</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 5: Moody Player (Bottom Right) -->
+                    <div class="orbit-node node-bottom-right" onclick="openProjectModal('moodyplayer')">
+                        <div class="counter-ccw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🎵</span>05 // AI EMOTION MUSIC</span>
+                                    <span class="live-badge">● Live on GitHub</span>
+                                </div>
+                                <div class="hover-video-screen" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('./moody-preview.jpg'); background-size: cover; background-position: center;">
+                                    <div class="hover-video-rec">● AI VISION // FACE-API.JS</div>
+                                </div>
+                                <div class="hover-card-title">Moody Player</div>
+                                <div class="hover-card-desc">AI face emotion recognition web player that scans webcam expressions and streams curated 320kbps mood tracks.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">React 19 • Face-API • Vite</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Node 6: Cyber Portfolio V2 (Bottom Left) -->
+                    <div class="orbit-node node-bottom-left" onclick="openProjectModal('cyberportfolio')">
+                        <div class="counter-ccw">
+                            <!-- Direct Orbit Project Card -->
+                            <div class="orbit-hover-card">
+                                <div class="hover-card-header">
+                                    <span class="cat"><span style="margin-right: 5px; font-size: 13px;">🎧</span>06 // CREATIVE SUITE</span>
+                                    <span class="live-badge">● V2</span>
+                                </div>
+                                <div class="hover-video-screen">
+                                    <div class="hover-video-rec">● REC // AUDIO FX</div>
+                                    <span style="font-size: 20px;">⚡</span>
+                                    <span class="hover-video-title">Synthesizer & Dialogue</span>
+                                </div>
+                                <div class="hover-card-title">Cyber Portfolio V2</div>
+                                <div class="hover-card-desc">Interactive companion dialogue system, Web Audio synthesizer, and floating ambient canvas.</div>
+                                <div class="hover-card-bottom">
+                                    <span class="tech">Web Audio • GSAP</span>
+                                    <span class="action">Details ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Place Compact & Translucent Detail Modal (User requested: thoda chota + semi-transparent) -->
+            <div id="project-detail-modal">
+                <div class="project-modal-glass">
+                    <div class="modal-top-bar">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span id="modal-category" class="modal-cat-tag">01 // ANIMATION ENGINE</span>
+                            <span class="hover-card-header live-badge" style="font-size: 8px; margin: 0;">● Live</span>
+                        </div>
+                        <button onclick="closeProjectModal()" class="modal-close-btn" title="Close (ESC)">✕</button>
+                    </div>
+
+                    <div id="modal-video-box" class="modal-video-box" title="Hover: 2X Double-Size Pop-Out">
+                        <div class="modal-video-rec" id="modal-video-rec">● REC // DEMO VIDEO LOOP</div>
+                        <div id="modal-video-inner" class="modal-video-inner">
+                            <div style="font-size: 34px; margin-bottom: 2px;">🎬</div>
+                            <div id="modal-video-title" style="font-size: 13px; font-weight: 700; color: #fff;">Full HD Project Demo Video</div>
+                            <div style="font-size: 10px; color: #a5b4fc; font-family: monospace; margin-top: 2px;">Looping demonstration of interactive user flows</div>
+                        </div>
+                        <img id="modal-preview-img" class="modal-preview-img" src="" alt="Project Live Screenshot" style="display: none;">
+                        <video id="modal-preview-video" class="modal-preview-img" src="" autoplay loop muted playsinline style="display: none;"></video>
+                        <div class="modal-img-zoom-hint" id="modal-zoom-hint" style="display: none;">🔍 Hover: 2X Pop-Out Zoom</div>
+                    </div>
+
+                    <div id="modal-title" class="modal-title-text">Cyberfiction 3D Studio</div>
+                    <div id="modal-desc" class="modal-desc-text">Interactive 300-frame image sequence scroll controller synced dynamically with GSAP ScrollTrigger.</div>
+
+                    <div class="modal-meta-grid">
+                        <div class="modal-meta-card">
+                            <span class="meta-lbl">Architecture</span>
+                            <span id="modal-highlight" style="font-weight: 600;">60 FPS Canvas Sequence</span>
+                        </div>
+                        <div class="modal-meta-card">
+                            <span class="meta-lbl">Deployment</span>
+                            <span id="modal-deploy" style="font-weight: 600;">Vercel Edge Global CDN</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-tech-wrap">
+                        <div class="lbl">Technologies Used:</div>
+                        <div id="modal-tech-list" class="modal-tech-pills"></div>
+                    </div>
+
+                    <div class="modal-action-row">
+                        <button onclick="closeProjectModal()" class="modal-btn secondary">Close</button>
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <a id="modal-code-link" href="https://github.com" target="_blank" class="modal-btn secondary"><i class="fa-brands fa-github"></i> Code ↗</a>
+                            <a id="modal-live-link" href="javascript:void(0)" target="_blank" class="modal-btn primary">Launch App ↗</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PAGE 3: Contact & Connect -->
+        <div id="page3">
+            <!-- Left Info Card -->
+            <div class="contact-left-card tilt-card">
+                <h1>Let's Connect</h1>
+                <p>Interested in collaborating, hiring for a frontend role, or creating something creative together? Drop me a line!</p>
+                <div class="info-row" style="cursor: pointer;" onclick="copyEmail('faisalali06870@gmail.com')" title="Click to copy email">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>faisalali06870@gmail.com</span>
+                    <span id="copy-badge" style="font-size: 10px; opacity: 0.6; margin-left: auto;">(Click to copy)</span>
+                </div>
+                <div class="info-row" style="cursor: pointer;" onclick="window.open('tel:+917307751593')" title="Call or WhatsApp">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 73077 51593</span>
+                    <span style="font-size: 10px; opacity: 0.6; margin-left: auto;">(Call / WhatsApp)</span>
+                </div>
+                <div class="info-row">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Lucknow, Uttar Pradesh, India</span>
+                </div>
+                <div class="info-row">
+                    <i class="fa-solid fa-circle-check" style="background: #16a34a; color: #fff;"></i>
+                    <span>Available for Full-time & Freelance Roles</span>
+                </div>
+
+                <!-- Social Connect Links Row -->
+                <div class="contact-social-row">
+                    <a href="https://github.com/faisalali06870-commits" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub (@faisalali06870-commits)">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/faisal-ali-66495632a" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn Profile (faisal-ali)">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://www.instagram.com/__faisal_ali___?knvt=MXVvaTRqMWsxMmNlZg==" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram Profile (__faisal_ali___)">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/917307751593" target="_blank" rel="noopener noreferrer" class="social-icon-btn wa-btn" title="Direct WhatsApp (+91 73077 51593)">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <a href="mailto:faisalali06870@gmail.com" class="social-icon-btn" title="Send Email (faisalali06870@gmail.com)">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </a>
+                    <a href="./Faisal_Ali_Resume.pdf" download="Faisal_Ali_Resume.pdf" onclick="triggerResumeDownload(event)" class="social-icon-btn" title="Download Faisal's Resume PDF">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Message Form (Silent Background Dispatch - No Launcher) -->
+            <form class="contact-right-form tilt-card" onsubmit="handleContactSubmit(event)">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <h3 style="margin: 0;">Send a Message</h3>
+                    <span style="font-size: 11px; color: #10b981; font-weight: 700; display: inline-flex; align-items: center; gap: 5px;">
+                        <i class="fa-solid fa-bolt" style="font-size: 12px;"></i> Instant Delivery
+                    </span>
+                </div>
+                <input type="text" placeholder="Your Name" class="contact-input" required>
+                <input type="email" placeholder="Your Email" class="contact-input" required>
+                <textarea placeholder="Your Message..." rows="3" class="contact-input" style="resize: none;" required></textarea>
+                <button type="submit" class="submit-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Send Message 🚀</span>
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+
+        <!-- Core Modular Engines & Logic -->
+    <script src="./script.js"></script>
+</body>
+</html>
