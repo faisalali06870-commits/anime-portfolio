@@ -1047,8 +1047,8 @@
                 highlight: "Web Audio API Synthesizer",
                 deploy: "GitHub Pages / Vercel",
                 tech: ["Web Audio API", "GSAP 3", "Canvas 2D", "Locomotive"],
-                codeUrl: "https://github.com/faisalali",
-                liveUrl: "https://faisal.dev"
+                codeUrl: "https://github.com/faisalali06870-commits/anime-portfolio",
+                liveUrl: "https://anime-portfolio-jet.vercel.app"
             }
         };
 

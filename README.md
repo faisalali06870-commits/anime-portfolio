@@ -2,8 +2,8 @@
 
 An ultra-modern, high-performance creative developer portfolio inspired by cyberpunk aesthetics and modern web experiences. Built using HTML5 Canvas, Locomotive Scroll, GSAP, Web Audio API, and CSS3.
 
-[![Vercel Deployment](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
-[![GitHub License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-anime--portfolio--jet.vercel.app-00dfa2?style=for-the-badge&logo=vercel)](https://anime-portfolio-jet.vercel.app)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/faisalali06870-commits/anime-portfolio)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/faisal-ali-66495632a)
 [![Instagram](https://img.shields.io/badge/Instagram-Follow-E4405F?style=for-the-badge&logo=instagram)](https://www.instagram.com/__faisal_ali___?knvt=MXVvaTRqMWsxMmNlZg==)
 
@@ -67,7 +67,7 @@ anime-Portfolio/
 
 ## 📬 Contact & Connect
 
-- **Portfolio**: Live on Vercel
+- **Portfolio**: [anime-portfolio-jet.vercel.app](https://anime-portfolio-jet.vercel.app)
 - **LinkedIn**: [faisal-ali-66495632a](https://www.linkedin.com/in/faisal-ali-66495632a)
 - **Instagram**: [@\_\_faisal\_ali\_\_\_](https://www.instagram.com/__faisal_ali___?knvt=MXVvaTRqMWsxMmNlZg==)
 - **Email**: [faisalali06870@gmail.com](mailto:faisalali06870@gmail.com)
